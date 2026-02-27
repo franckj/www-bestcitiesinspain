@@ -1,0 +1,80 @@
+---
+const navLinks = [
+  { label: 'Cities', href: '/#cities' },
+  { label: 'About', href: '/about/' },
+];
+---
+
+<nav id="nav" style="background-color: #1A1A1A;" class="fixed top-0 left-0 right-0 z-50 h-16">
+  <div class="max-w-6xl mx-auto px-4 h-full flex items-center justify-between">
+    <a href="/" class="font-display font-bold text-xl tracking-tight" style="font-family: 'Playfair Display', Georgia, serif;">
+      <span style="color: #D4A017;">bestcities</span><span style="color: #FAF7F2;">in</span><span style="color: #D4A017;">spain</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden md:flex items-center gap-8">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="text-sm font-medium transition-colors duration-200"
+            style="color: #9CA3AF;"
+            onmouseover="this.style.color='#FAF7F2'"
+            onmouseout="this.style.color='#9CA3AF'"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-gray-300 transition-all duration-200" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-gray-300 transition-all duration-200" id="bar2"></span>
+      <span class="block w-6 h-0.5 bg-gray-300 transition-all duration-200" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden"
+    style="background-color: #1A1A1A; border-top: 1px solid #2A2A2A;"
+  >
+    <ul class="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-4">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="block text-base font-medium"
+            style="color: #9CA3AF;"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.contains('hidden') === false;
+    if (isOpen) {
+      menu?.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+    } else {
+      menu?.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+</script>

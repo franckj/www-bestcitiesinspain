@@ -1,0 +1,43 @@
+---
+interface Props {
+  facts: {
+    region: string;
+    population: string;
+    airport: string;
+    bestMonths: string;
+    avgTemp: string;
+    currency?: string;
+  };
+}
+
+const { facts } = Astro.props;
+
+const rows = [
+  { label: 'Region', value: facts.region },
+  { label: 'Population', value: facts.population },
+  { label: 'Airport', value: facts.airport },
+  { label: 'Best months', value: facts.bestMonths },
+  { label: 'Temperature', value: facts.avgTemp },
+  { label: 'Currency', value: facts.currency || 'Euro (€)' },
+];
+---
+
+<div
+  class="rounded-lg p-5"
+  style="background-color: #F0EBE3; border: 1px solid rgba(183, 71, 42, 0.15);"
+>
+  <h2
+    class="text-base font-bold mb-4 pb-3"
+    style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; border-bottom: 2px solid #B7472A;"
+  >
+    Quick Facts
+  </h2>
+  <dl class="space-y-3">
+    {rows.map(row => (
+      <div class="flex flex-col gap-0.5">
+        <dt class="text-xs font-semibold uppercase tracking-wider" style="color: #6B7280;">{row.label}</dt>
+        <dd class="text-sm font-medium" style="color: #1A1A1A;">{row.value}</dd>
+      </div>
+    ))}
+  </dl>
+</div>

@@ -1,0 +1,40 @@
+---
+interface Props {
+  name: string;
+  region: string;
+  hook: string;
+  gradient: string;
+}
+
+const { name, region, hook, gradient } = Astro.props;
+---
+
+<section style={`background: ${gradient}; padding: 4rem 0 3rem;`}>
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Breadcrumb -->
+    <nav class="mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 text-sm" style="color: rgba(255,255,255,0.75);">
+        <li><a href="/" style="color: rgba(255,255,255,0.75);" class="hover:text-white transition-colors">Home</a></li>
+        <li aria-hidden="true">›</li>
+        <li><a href="/#cities" style="color: rgba(255,255,255,0.75);" class="hover:text-white transition-colors">Cities</a></li>
+        <li aria-hidden="true">›</li>
+        <li style="color: white;" aria-current="page">{name}</li>
+      </ol>
+    </nav>
+
+    <!-- Hero content -->
+    <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: rgba(255,255,255,0.7);">{region}</p>
+    <h1
+      class="font-bold mb-4"
+      style="font-family: 'Playfair Display', Georgia, serif; color: white; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; text-shadow: 0 2px 8px rgba(0,0,0,0.25);"
+    >
+      {name}, Spain
+    </h1>
+    <p
+      class="max-w-2xl"
+      style="color: rgba(255,255,255,0.9); font-size: 1.125rem; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.2);"
+    >
+      {hook}
+    </p>
+  </div>
+</section>

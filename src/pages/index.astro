@@ -1,0 +1,96 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../components/BaseLayout.astro';
+import CityCard from '../components/CityCard.astro';
+
+const allCities = await getCollection('cities');
+const cities = allCities.sort((a, b) => a.data.order - b.data.order);
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Best Cities in Spain",
+  "url": "https://bestcitiesinspain.com",
+  "description": "An independent travel guide to Spain's greatest cities"
+});
+---
+
+<BaseLayout
+  title="Best Cities in Spain — An Independent Travel Guide"
+  description="Discover the best cities in Spain to visit in 2026. From Barcelona to Bilbao, our independent guide covers where to go, when to visit, and what makes each city worth your time."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section style="background-color: #FAF7F2; padding: 5rem 0 4rem;">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h1
+        class="font-bold mb-4"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1;"
+      >
+        Best Cities in Spain
+      </h1>
+      <p
+        class="mb-6 max-w-xl mx-auto"
+        style="color: #B7472A; font-size: 1.125rem; font-style: italic; font-family: 'Playfair Display', Georgia, serif;"
+      >
+        An independent guide to where to go, when to visit, and why it matters
+      </p>
+      <p class="max-w-2xl mx-auto" style="color: #333333; font-size: 1.05rem; line-height: 1.7;">
+        Spain has over 8,000 cities and towns, but only a handful truly deserve your time. Whether you're drawn to Gaudí's Barcelona, the tapas bars of Madrid, or the Moorish palaces of Granada, this guide cuts through the noise. We've visited every city on this list — here's what's actually worth it.
+      </p>
+    </div>
+  </section>
+
+  <!-- City Grid -->
+  <section id="cities" style="background-color: #FAF7F2; padding: 3rem 0 5rem;" scroll-margin-top="80px">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2
+        class="font-bold mb-8 text-center"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.75rem;"
+      >
+        8 Cities Worth Your Time
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {cities.map(city => (
+          <CityCard
+            name={city.data.name}
+            slug={city.id.replace(/\.mdx?$/, '')}
+            region={city.data.region}
+            hook={city.data.hook}
+            gradient={city.data.gradient}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Trust This Guide -->
+  <section style="padding: 5rem 0; background-color: #F0EBE3;">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2
+        class="font-bold mb-6"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.75rem;"
+      >
+        Why Trust This Guide
+      </h2>
+      <p style="color: #333333; font-size: 1.05rem; line-height: 1.7;">
+        This isn't a listicle scraped from other travel sites. Best Cities in Spain is an independent guide — not affiliated with any tourism board or hotel chain. Every recommendation comes from on-the-ground experience, not press trips. We'll tell you when a city is overrated, when to skip the tourist trap, and where to find what the locals actually love.
+      </p>
+    </div>
+  </section>
+
+  <!-- Latest Guides (placeholder) -->
+  <section style="padding: 5rem 0; background-color: #FAF7F2;">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2
+        class="font-bold mb-4"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.75rem;"
+      >
+        Latest Guides
+      </h2>
+      <p style="color: #6B7280; font-size: 1rem; line-height: 1.7;">
+        Our in-depth city guides are coming soon. Check back for seasonal recommendations, city comparisons, and insider travel tips.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #B7472A;
+  --color-accent: #D4A017;
+  --color-bg: #FAF7F2;
+  --color-dark: #1A1A1A;
+  --color-light: #FAF7F2;
+  --color-body: #333333;
+  --color-muted: #6B7280;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+}
+
+:root {
+  --color-primary: #B7472A;
+  --color-accent: #D4A017;
+  --color-bg: #FAF7F2;
+  --color-dark: #1A1A1A;
+  --color-light: #FAF7F2;
+  --color-body: #333333;
+  --color-muted: #6B7280;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  background-color: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-body);
+  background-color: var(--color-bg);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-dark);
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.prose-city {
+  max-width: 720px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--color-body);
+}
+
+.prose-city h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-city h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-city p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-city strong {
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.prose-city a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.prose-city ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-city li {
+  margin-bottom: 0.5rem;
+}

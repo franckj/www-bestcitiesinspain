@@ -1,0 +1,155 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../components/BaseLayout.astro';
+import CityHero from '../components/CityHero.astro';
+import QuickFacts from '../components/QuickFacts.astro';
+import HighlightCard from '../components/HighlightCard.astro';
+import CityCard from '../components/CityCard.astro';
+
+export async function getStaticPaths() {
+  const cities = await getCollection('cities');
+  return cities.map(city => ({
+    params: { slug: city.id.replace(/\.mdx?$/, '') },
+    props: { city },
+  }));
+}
+
+const { city } = Astro.props;
+const { Content } = await render(city);
+const allCities = await getCollection('cities');
+
+// Pick 3 other cities (excluding current)
+const otherCities = allCities
+  .filter(c => c.id !== city.id)
+  .sort(() => Math.random() - 0.5)
+  .slice(0, 3);
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TravelArticle",
+      "headline": `${city.data.name}, Spain — Why Visit & What to Know`,
+      "author": {
+        "@type": "Person",
+        "name": "Franck",
+        "url": "https://bestcitiesinspain.com/about/"
+      },
+      "datePublished": "2026-02-27",
+      "dateModified": "2026-02-27",
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Best Cities in Spain",
+        "url": "https://bestcitiesinspain.com"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bestcitiesinspain.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cities",
+          "item": "https://bestcitiesinspain.com/#cities"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": city.data.name,
+          "item": `https://bestcitiesinspain.com/${city.id.replace(/\.mdx?$/, '')}/`
+        }
+      ]
+    }
+  ]
+});
+---
+
+<BaseLayout
+  title={`${city.data.name}, Spain — Travel Guide | Best Cities in Spain`}
+  description={city.data.description}
+  schema={schema}
+>
+  <CityHero
+    name={city.data.name}
+    region={city.data.region}
+    hook={city.data.hook}
+    gradient={city.data.gradient}
+  />
+
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="lg:grid lg:grid-cols-3 lg:gap-10">
+
+      <!-- Main content -->
+      <div class="lg:col-span-2">
+        <!-- Highlights -->
+        <section class="mb-10">
+          <h2
+            class="font-bold mb-6"
+            style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.5rem;"
+          >
+            Top Highlights
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {city.data.highlights.map((highlight, i) => (
+              <HighlightCard
+                title={highlight.title}
+                description={highlight.description}
+                number={i + 1}
+              />
+            ))}
+          </div>
+        </section>
+
+        <!-- City body content -->
+        <div class="prose-city">
+          <Content />
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="mt-8 lg:mt-0">
+        <div class="lg:sticky lg:top-24">
+          <QuickFacts
+            facts={{
+              region: city.data.region,
+              population: city.data.population,
+              airport: city.data.airport,
+              bestMonths: city.data.bestMonths,
+              avgTemp: city.data.avgTemp,
+            }}
+          />
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Explore More Cities -->
+  <section style="background-color: #F0EBE3; padding: 4rem 0;">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2
+        class="font-bold mb-8 text-center"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.5rem;"
+      >
+        Explore More Cities
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {otherCities.map(c => (
+          <CityCard
+            name={c.data.name}
+            slug={c.id.replace(/\.mdx?$/, '')}
+            region={c.data.region}
+            hook={c.data.hook}
+            gradient={c.data.gradient}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,16 @@
+# bestcitiesinspain.com
+
+> An independent travel guide to Spain's greatest cities. Not affiliated with any tourism board. Covers the best cities to visit in Spain with practical information on what to see, when to go, and where to stay.
+
+## Core Cities
+- Barcelona — Catalonia's creative capital
+- Madrid — Spain's political and cultural heart
+- Seville — The soul of Andalusia
+- Granada — The Alhambra and Moorish heritage
+- Valencia — Paella, futurism, and beaches
+- San Sebastián — Culinary capital of the Basque Country
+- Bilbao — Guggenheim and Basque reinvention
+- Málaga — Picasso's birthplace, gateway to southern Spain
+
+## About
+Written by Franck. Independent guide — not affiliated with Spanish tourism boards.

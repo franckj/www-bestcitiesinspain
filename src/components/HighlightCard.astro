@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  number: number;
+}
+
+const { title, description, number } = Astro.props;
+---
+
+<div
+  class="rounded-lg p-5"
+  style="background-color: #FAF7F2; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 1px 3px rgba(0,0,0,0.05);"
+>
+  <div class="flex items-start gap-3">
+    <span
+      class="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+      style="background-color: #B7472A; color: white; font-family: 'Playfair Display', Georgia, serif;"
+    >
+      {number}
+    </span>
+    <div>
+      <h3
+        class="font-bold mb-1.5"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1rem;"
+      >
+        {title}
+      </h3>
+      <p class="text-sm" style="color: #333333; line-height: 1.6;">{description}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+---
+const cities = [
+  { name: 'Barcelona', slug: 'barcelona' },
+  { name: 'Madrid', slug: 'madrid' },
+  { name: 'Seville', slug: 'seville' },
+  { name: 'Granada', slug: 'granada' },
+  { name: 'Valencia', slug: 'valencia' },
+  { name: 'San Sebastián', slug: 'san-sebastian' },
+  { name: 'Bilbao', slug: 'bilbao' },
+  { name: 'Málaga', slug: 'malaga' },
+];
+
+const infoLinks = [
+  { label: 'About', href: '/about/' },
+  { label: 'Contact', href: '/contact/' },
+  { label: 'Privacy', href: '/privacy/' },
+  { label: 'Terms', href: '/terms/' },
+  { label: 'Disclaimer', href: '/disclaimer/' },
+];
+---
+
+<footer style="background-color: #1A1A1A; color: #FAF7F2;">
+  <div class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+      <!-- Column 1: Brand -->
+      <div>
+        <a href="/" class="font-bold text-xl block mb-3" style="font-family: 'Playfair Display', Georgia, serif;">
+          <span style="color: #D4A017;">bestcities</span><span style="color: #FAF7F2;">in</span><span style="color: #D4A017;">spain</span>
+        </a>
+        <p class="text-sm mb-3" style="color: #9CA3AF;">
+          An independent guide to Spain's greatest cities — where to go, when to visit, and why it matters.
+        </p>
+        <p class="text-xs" style="color: #6B7280;">
+          Not affiliated with any Spanish tourism board or government body.
+        </p>
+      </div>
+
+      <!-- Column 2: Cities -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: #6B7280;">Cities</h3>
+        <ul class="space-y-2">
+          {cities.map(city => (
+            <li>
+              <a
+                href={`/${city.slug}/`}
+                class="text-sm transition-colors duration-200"
+                style="color: #9CA3AF;"
+                onmouseover="this.style.color='#FAF7F2'"
+                onmouseout="this.style.color='#9CA3AF'"
+              >
+                {city.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Info -->
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: #6B7280;">Info</h3>
+        <ul class="space-y-2">
+          {infoLinks.map(link => (
+            <li>
+              <a
+                href={link.href}
+                class="text-sm transition-colors duration-200"
+                style="color: #9CA3AF;"
+                onmouseover="this.style.color='#FAF7F2'"
+                onmouseout="this.style.color='#9CA3AF'"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-sm" style="color: #9CA3AF;">
+          <a href="mailto:hello@bestcitiesinspain.com" style="color: #D4A017;">hello@bestcitiesinspain.com</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 border-t" style="border-color: #2A2A2A;">
+      <p class="text-xs text-center" style="color: #6B7280;">
+        © 2026 bestcitiesinspain.com · An independent travel guide — not affiliated with any Spanish tourism board.
+      </p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../components/BaseLayout.astro';
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Franck",
+  "url": "https://bestcitiesinspain.com/about/",
+  "sameAs": ["https://ilovecatalonia.com/about/"]
+});
+---
+
+<BaseLayout
+  title="About This Guide | Best Cities in Spain"
+  description="Best Cities in Spain is an independent travel guide — not a tourism board, not a hotel chain. Learn about who's behind the recommendations."
+  schema={schema}
+>
+  <div style="max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem;">
+    <h1
+      class="font-bold mb-8"
+      style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 2.25rem; line-height: 1.2;"
+    >
+      About Best Cities in Spain
+    </h1>
+
+    <div class="prose-city">
+      <p>
+        Best Cities in Spain is an independent travel guide to the cities that make this country one of Europe's most compelling destinations. We're not affiliated with any Spanish tourism board, hotel chain, or tour operator.
+      </p>
+
+      <p>
+        Spain draws over 85 million visitors a year — more than almost any country on Earth. Most of them head straight to Barcelona or Madrid, and plenty never make it beyond the resort coasts. That's a mistake. The real Spain lives in the tapas bars of Seville, the pintxo crawls of San Sebastián, the street art of Málaga, and the Moorish courtyards of Granada.
+      </p>
+
+      <p>
+        This site exists to help you figure out which cities are actually worth your time — and how to make the most of them when you get there. Every recommendation is based on personal experience, not press trips or sponsored content.
+      </p>
+
+      <h2>What we cover</h2>
+      <p>
+        We focus on Spain's cities — not resorts, not beaches (unless they're part of a city worth visiting), not rural retreats. For each city, you'll find honest assessments of what to see, when to go, where to base yourself, and what most guides get wrong.
+      </p>
+
+      <h2>What we don't do</h2>
+      <p>
+        We don't accept payment for recommendations. We don't rank cities based on who has the best affiliate program. If we recommend a tour or a hotel booking platform, it's because we'd use it ourselves — and yes, we may earn a commission if you book through our links. That's how we keep this site running without putting it behind a paywall.
+      </p>
+
+      <h2>Who's behind this</h2>
+      <p>
+        This guide is written and maintained by Franck — a France-based travel writer, builder of independent regional guides, and firm believer that the best way to understand a country is through its cities. You can also find his work at <a href="https://ilovecatalonia.com" target="_blank" rel="noopener">ilovecatalonia.com</a>.
+      </p>
+
+      <p>
+        Have a question or a correction? Reach out at <a href="mailto:hello@bestcitiesinspain.com">hello@bestcitiesinspain.com</a>.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
