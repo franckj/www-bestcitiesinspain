@@ -1,8 +1,9 @@
 ---
 name: "Valencia"
+title: "Valencia Travel Guide 2026 — Paella, Beaches & Hidden Gems | Best Cities in Spain"
 region: "Valencian Community"
 hook: "Paella's birthplace, a futuristic arts complex, golden beaches — and none of the Barcelona crowds."
-description: "Valencia travel guide — what to see, when to visit, and where to stay in Spain's most underrated big city. An independent guide from Best Cities in Spain."
+description: "Everything Barcelona offers, without the crowds or the prices. Real paella, futuristic architecture, golden beaches. Why Valencia is Spain's most underrated city."
 population: "800,000 (metro: 1.8 million)"
 airport: "VLC — Manises"
 bestMonths: "April, May, June, September, October"

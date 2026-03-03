@@ -4,6 +4,7 @@ const cities = defineCollection({
   type: 'content',
   schema: z.object({
     name: z.string(),
+    title: z.string(),
     region: z.string(),
     hook: z.string(),
     description: z.string(),

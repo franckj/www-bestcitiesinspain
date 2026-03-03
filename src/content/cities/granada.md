@@ -1,8 +1,9 @@
 ---
 name: "Granada"
+title: "Granada Travel Guide 2026 — The Alhambra & Beyond | Best Cities in Spain"
 region: "Andalusia"
 hook: "The Alhambra alone justifies the trip — but Granada's free tapas, Moorish quarter, and Sierra Nevada views seal the deal."
-description: "Granada travel guide — what to see, when to visit, and where to stay in the city of the Alhambra. An independent guide from Best Cities in Spain."
+description: "The Alhambra lives up to the hype — but Granada's free tapas, the Albaicín, and Sierra Nevada make it more than a one-attraction city. Our independent guide."
 population: "230,000"
 airport: "GRX — Federico García Lorca"
 bestMonths: "April, May, September, October"

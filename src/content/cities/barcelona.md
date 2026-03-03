@@ -1,8 +1,9 @@
 ---
 name: "Barcelona"
+title: "Barcelona Travel Guide 2026 — What to See, Where to Stay | Best Cities in Spain"
 region: "Catalonia"
 hook: "Where Gaudí's imagination meets Mediterranean beaches and one of Europe's best food scenes."
-description: "Barcelona travel guide — what to see, when to visit, and where to stay in Spain's most creative city. An independent guide from Best Cities in Spain."
+description: "Plan your Barcelona trip with an honest, independent guide. Gaudí, Gothic Quarter, beaches, tapas — what's worth it, what to skip, and where the locals actually go."
 population: "1.6 million (metro: 5.5 million)"
 airport: "BCN — El Prat"
 bestMonths: "May, June, September, October"

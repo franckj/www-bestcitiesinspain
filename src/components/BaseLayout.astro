@@ -21,6 +21,7 @@ const {
 
 const canonical = canonicalURL || Astro.url.href;
 const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://bestcitiesinspain.com${ogImage}`;
+const fullTitle = title.includes('Best Cities in Spain') ? title : `${title} | Best Cities in Spain`;
 ---
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://bestciti
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
@@ -41,7 +42,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://bestciti
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:url" content={canonical} />
@@ -50,7 +51,7 @@ const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `https://bestciti
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageAbsolute} />
 

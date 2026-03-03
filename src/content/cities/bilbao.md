@@ -1,8 +1,9 @@
 ---
 name: "Bilbao"
+title: "Bilbao Travel Guide 2026 — Guggenheim, Pintxos & Basque Country | Best Cities in Spain"
 region: "Basque Country"
 hook: "The Guggenheim transformed this industrial city into a cultural powerhouse — and the food scene might be even better."
-description: "Bilbao travel guide — what to see, when to visit, and where to stay in the Basque Country's biggest city. An independent guide from Best Cities in Spain."
+description: "The Guggenheim put Bilbao on the map, but the pintxo bars, riverside walks, and Basque culture keep you there. An independent guide to Spain's reinvention story."
 population: "350,000 (metro: 1 million)"
 airport: "BIO — Loiu"
 bestMonths: "May, June, September, October"

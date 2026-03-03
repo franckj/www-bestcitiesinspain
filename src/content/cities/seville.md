@@ -1,8 +1,9 @@
 ---
 name: "Seville"
+title: "Seville Travel Guide 2026 — Flamenco, Alcázar & Moorish Beauty | Best Cities in Spain"
 region: "Andalusia"
 hook: "The soul of Andalusia — flamenco, orange trees, Moorish palaces, and the best tapas culture in Spain."
-description: "Seville travel guide — what to see, when to visit, and where to stay in the heart of Andalusia. An independent guide from Best Cities in Spain."
+description: "Seville hits harder than any city in Spain. Flamenco in Triana, the Alcázar at sunrise, tapas in Alameda. An independent guide to Andalusia's soul."
 population: "690,000 (metro: 1.5 million)"
 airport: "SVQ — San Pablo"
 bestMonths: "March, April, October, November"

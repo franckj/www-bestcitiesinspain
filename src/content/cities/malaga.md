@@ -1,8 +1,9 @@
 ---
 name: "Málaga"
+title: "Málaga Travel Guide 2026 — Beaches, Picasso & Andalusian Life | Best Cities in Spain"
 region: "Andalusia"
 hook: "Picasso's birthplace has reinvented itself as a cultural hotspot — great museums, beaches, and the gateway to southern Spain."
-description: "Málaga travel guide — what to see, when to visit, and where to stay in Andalusia's coastal capital. An independent guide from Best Cities in Spain."
+description: "Málaga isn't just an airport anymore. Picasso museum, Alcazaba views, beachfront chiringuitos, 300 days of sun. Why it's one of Spain's best all-round cities."
 population: "580,000 (metro: 1.6 million)"
 airport: "AGP — Costa del Sol"
 bestMonths: "April, May, June, September, October"

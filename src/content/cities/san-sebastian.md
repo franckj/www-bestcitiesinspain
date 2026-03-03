@@ -1,8 +1,9 @@
 ---
 name: "San Sebastián"
+title: "San Sebastián Travel Guide 2026 — Pintxos, Beaches & Basque Culture | Best Cities in Spain"
 region: "Basque Country"
 hook: "The pintxo capital of the world — golden beaches, Michelin stars per capita like nowhere else, and a Basque soul."
-description: "San Sebastián travel guide — what to see, when to visit, and where to stay in Spain's culinary capital. An independent guide from Best Cities in Spain."
+description: "More Michelin stars per capita than almost anywhere on Earth — and one of Europe's best city beaches. An independent guide to Spain's culinary capital."
 population: "187,000"
 airport: "EAS — San Sebastián (or BIO — Bilbao, 1hr away)"
 bestMonths: "June, July, August, September"

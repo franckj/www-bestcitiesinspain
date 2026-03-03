@@ -1,8 +1,9 @@
 ---
 name: "Madrid"
+title: "Madrid Travel Guide 2026 — Museums, Tapas & Nightlife | Best Cities in Spain"
 region: "Community of Madrid"
 hook: "Spain's late-night capital — where world-class art, unbeatable tapas, and the country's best nightlife collide."
-description: "Madrid travel guide — what to see, when to visit, and where to stay in Spain's vibrant capital. An independent guide from Best Cities in Spain."
+description: "Madrid doesn't try to charm you — it wins you over. The Prado, late-night tapas in La Latina, Retiro Park. An independent guide to Spain's capital."
 population: "3.3 million (metro: 6.7 million)"
 airport: "MAD — Barajas"
 bestMonths: "March, April, May, September, October"
