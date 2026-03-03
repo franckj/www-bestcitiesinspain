@@ -41,3 +41,7 @@ Barcelona–El Prat airport (BCN) is a major European hub with direct flights fr
 ## Where to Base Yourself
 
 **El Born / La Ribera** is the sweet spot — walkable to the Gothic Quarter, the beach, and Ciutadella Park, but less hectic than La Rambla. For a quieter experience with better-value accommodation, look at **Gràcia**, a village-like neighbourhood with its own plaças and excellent local restaurants. Avoid staying directly on La Rambla — it's noisy, touristy, and overpriced.
+
+---
+
+*Looking for more? See how Barcelona compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

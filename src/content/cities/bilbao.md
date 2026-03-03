@@ -41,3 +41,7 @@ Bilbao airport (BIO) has good connections across Europe and is the main gateway 
 ## Where to Base Yourself
 
 **Casco Viejo** is the best base — it's where the life is, the pintxos are, and it's an easy walk to the Guggenheim along the river. Hotels here tend to be smaller and more characterful. **Ensanche / Abando** is the modern business district between the old town and the Guggenheim — more polished, with bigger hotels and wider streets. Good if you want a central position with easy access to both areas.
+
+---
+
+*Looking for more? See how Bilbao compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

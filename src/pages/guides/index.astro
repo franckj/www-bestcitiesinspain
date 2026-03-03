@@ -1,0 +1,82 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+
+const guides = await getCollection('guides');
+const sorted = guides.sort((a, b) =>
+  new Date(b.data.datePublished).getTime() - new Date(a.data.datePublished).getTime()
+);
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Spain Travel Guides",
+  "description": "In-depth travel guides to help you plan your trip to Spain.",
+  "url": "https://bestcitiesinspain.com/guides/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Best Cities in Spain",
+    "url": "https://bestcitiesinspain.com"
+  }
+});
+---
+
+<BaseLayout
+  title="Spain Travel Guides | Best Cities in Spain"
+  description="In-depth travel guides to help you plan your trip to Spain. City comparisons, seasonal recommendations, and insider tips."
+  schema={schema}
+>
+  <div style="background-color: #FAF7F2; padding: 4rem 0 5rem;">
+    <div class="max-w-4xl mx-auto px-4">
+
+      <!-- Header -->
+      <div class="mb-10">
+        <nav class="mb-4" aria-label="Breadcrumb">
+          <ol class="flex items-center gap-2 text-sm" style="color: #6B7280;">
+            <li><a href="/" style="color: #6B7280;">Home</a></li>
+            <li aria-hidden="true">›</li>
+            <li style="color: #333333;" aria-current="page">Guides</li>
+          </ol>
+        </nav>
+        <h1
+          class="font-bold mb-3"
+          style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.2;"
+        >
+          Spain Travel Guides
+        </h1>
+        <p style="color: #6B7280; font-size: 1.05rem;">
+          In-depth guides to help you plan your Spain trip — city comparisons, seasonal recommendations, and honest insider tips.
+        </p>
+      </div>
+
+      <!-- Guide cards -->
+      <div class="space-y-6">
+        {sorted.map(guide => {
+          const slug = guide.id.replace(/\.mdx?$/, '');
+          const date = new Date(guide.data.datePublished).toLocaleDateString('en-US', {
+            month: 'long', year: 'numeric'
+          });
+          return (
+            <a
+              href={`/guides/${slug}/`}
+              class="block rounded-lg p-6 transition-all duration-200"
+              style="background-color: white; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 1px 3px rgba(0,0,0,0.05);"
+              onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.1)'; this.style.transform='translateY(-1px)'"
+              onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)'; this.style.transform='translateY(0)'"
+            >
+              <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: #B7472A;">Guide · {date}</p>
+              <h2
+                class="font-bold mb-2"
+                style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.25rem; line-height: 1.3;"
+              >
+                {guide.data.title.split('|')[0].trim()}
+              </h2>
+              <p class="text-sm mb-4" style="color: #6B7280; line-height: 1.6;">{guide.data.description}</p>
+              <span class="text-sm font-semibold" style="color: #B7472A;">Read Guide →</span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

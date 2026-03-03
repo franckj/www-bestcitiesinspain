@@ -41,3 +41,7 @@ Valencia airport (VLC) has good European connections and is just 20 minutes from
 ## Where to Base Yourself
 
 **El Carmen / Ciutat Vella** is the old town — central, walkable, and full of character. Best for first-time visitors. **Ruzafa** is Valencia's trendiest neighbourhood, with the city's best brunch spots, wine bars, and independent shops. It's a 15-minute walk south of the old town and excellent value. For beach access, **Malvarrosa/Cabanyal** puts you on the sand but still close to the centre by tram.
+
+---
+
+*Looking for more? See how Valencia compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

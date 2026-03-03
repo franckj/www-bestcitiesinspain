@@ -41,3 +41,7 @@ Granada's airport (GRX) is small, with limited connections — mostly domestic a
 ## Where to Base Yourself
 
 **Central Granada (around Plaza Nueva)** puts you at the foot of both the Alhambra hill and the Albaicín. It's the most practical base with the best restaurants nearby. **Albaicín** itself is atmospheric but hilly — great if you're fit and want to wake up to Alhambra views. The area around **Calle Navas** is ideal for the tapas-crawl lifestyle.
+
+---
+
+*Looking for more? See how Granada compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

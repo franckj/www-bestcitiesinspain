@@ -41,3 +41,7 @@ Málaga–Costa del Sol airport (AGP) is one of Spain's busiest, with cheap flig
 ## Where to Base Yourself
 
 **Centro Histórico** is compact and walkable — stay here for proximity to museums, restaurants, and the port. Streets around **Plaza de la Merced** (where Picasso was born) are particularly pleasant. **Soho / Arts District** just south of the centre has a more creative, edgy feel with street art and newer restaurants. **Pedregalejo** is a former fishing village east of the centre with beachfront chiringuitos (fish restaurants) — ideal if you want a quieter, more local beach experience.
+
+---
+
+*Looking for more? See how Málaga compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

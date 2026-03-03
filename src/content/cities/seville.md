@@ -41,3 +41,7 @@ Seville's airport (SVQ) has limited international connections but good links fro
 ## Where to Base Yourself
 
 **Alameda de Hércules** is Seville's best-kept secret — a tree-lined plaza surrounded by tapas bars, boutique hotels, and local life. It's walkable to the old town but feels like a neighbourhood, not a theme park. **Santa Cruz** puts you right next to the Alcázar and cathedral but is pricier and more touristy. **Triana** across the river is authentic and atmospheric, with the city's best flamenco and ceramics.
+
+---
+
+*Looking for more? See how Seville compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

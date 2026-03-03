@@ -1,0 +1,268 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../components/BaseLayout.astro';
+import CityCard from '../../components/CityCard.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map(guide => ({
+    params: { slug: guide.id.replace(/\.mdx?$/, '') },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const { Content, headings } = await render(guide);
+const slug = guide.id.replace(/\.mdx?$/, '');
+
+// H2 headings for table of contents
+const tocHeadings = headings.filter(h => h.depth === 2);
+
+// 4 city cards for "Explore More"
+const allCities = await getCollection('cities');
+const exploreCities = allCities.sort((a, b) => a.data.order - b.data.order).slice(0, 4);
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best city in Spain to visit for the first time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Barcelona is the most complete first-visit city — it combines architecture, beaches, food, nightlife, and walkability. Madrid is a close second, especially for museums and tapas culture."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many cities should I visit in a week in Spain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two, maximum three. Spain rewards slow travel. A week works perfectly for Barcelona + Madrid, or Seville + Granada + Málaga."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the cheapest city in Spain to visit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Granada offers the best value — accommodation and food are significantly cheaper than Barcelona or Madrid, and the free tapas tradition means your bar tab essentially includes dinner."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Spain safe for tourists?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very safe. Spain consistently ranks among the safest countries in Europe. The main concern is petty theft in tourist-heavy areas of Barcelona and Madrid."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the most beautiful city in Spain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Subjectively, Seville — the combination of Moorish architecture, orange-tree-lined streets, and golden light is hard to beat. Granada's setting against the Sierra Nevada is also extraordinary."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Spanish cities can I visit in winter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Málaga and the southern coast are warmest (15–18°C). Seville is mild. Barcelona stays pleasant. Madrid is cold but sunny."
+      }
+    }
+  ]
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TravelArticle",
+  "headline": guide.data.title,
+  "author": {
+    "@type": "Person",
+    "name": guide.data.author,
+    "url": "https://bestcitiesinspain.com/about/"
+  },
+  "datePublished": guide.data.datePublished,
+  "dateModified": guide.data.dateModified,
+  "inLanguage": "en",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Best Cities in Spain",
+    "url": "https://bestcitiesinspain.com"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://bestcitiesinspain.com/images/og-default.jpg",
+    "width": 1200,
+    "height": 630
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bestcitiesinspain.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://bestcitiesinspain.com/guides/" },
+    { "@type": "ListItem", "position": 3, "name": guide.data.title, "item": `https://bestcitiesinspain.com/guides/${slug}/` }
+  ]
+};
+
+const schema = JSON.stringify([articleSchema, breadcrumbSchema, faqSchema]);
+
+// Format date for display
+const displayDate = new Date(guide.data.dateModified).toLocaleDateString('en-US', {
+  month: 'long', year: 'numeric'
+});
+---
+
+<BaseLayout
+  title={guide.data.title}
+  description={guide.data.description}
+  schema={schema}
+>
+  <div style="background-color: #FAF7F2; padding: 3rem 0 0;">
+    <div class="max-w-6xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 text-sm" style="color: #6B7280;">
+          <li><a href="/" style="color: #6B7280;" class="hover:text-primary transition-colors">Home</a></li>
+          <li aria-hidden="true">›</li>
+          <li><a href="/guides/" style="color: #6B7280;" class="hover:text-primary transition-colors">Guides</a></li>
+          <li aria-hidden="true">›</li>
+          <li style="color: #333333;" aria-current="page">Best Cities in Spain to Visit</li>
+        </ol>
+      </nav>
+
+      <!-- Article header -->
+      <div class="max-w-3xl mb-8">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-3" style="color: #B7472A;">Guide</p>
+        <h1
+          class="font-bold mb-4"
+          style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.15;"
+        >
+          Best Cities in Spain to Visit in 2026
+        </h1>
+        <p class="text-sm" style="color: #6B7280;">
+          By <a href="/about/" style="color: #B7472A;">{guide.data.author}</a> · Updated {displayDate}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main layout: article + TOC -->
+  <div class="max-w-6xl mx-auto px-4 py-10">
+    <div class="lg:grid lg:grid-cols-4 lg:gap-12">
+
+      <!-- Article body -->
+      <article class="lg:col-span-3">
+        <!-- Mobile TOC (collapsible) -->
+        {tocHeadings.length > 0 && (
+          <div class="lg:hidden mb-8 rounded-lg p-4" style="background-color: #F0EBE3; border: 1px solid rgba(183,71,42,0.15);">
+            <button
+              id="toc-toggle"
+              class="w-full flex items-center justify-between font-semibold text-sm"
+              style="color: #1A1A1A;"
+              aria-expanded="false"
+            >
+              <span>Table of Contents</span>
+              <span id="toc-icon" style="color: #B7472A; font-size: 1.2rem; line-height: 1;">+</span>
+            </button>
+            <nav id="toc-mobile" class="hidden mt-3">
+              <ol class="space-y-2">
+                {tocHeadings.map((h, i) => (
+                  <li>
+                    <a
+                      href={`#${h.slug}`}
+                      class="text-sm transition-colors"
+                      style="color: #6B7280;"
+                    >
+                      {i + 1}. {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        )}
+
+        <div class="prose-city">
+          <Content />
+        </div>
+      </article>
+
+      <!-- Desktop sticky TOC sidebar -->
+      {tocHeadings.length > 0 && (
+        <aside class="hidden lg:block">
+          <div class="sticky top-24 rounded-lg p-5" style="background-color: #F0EBE3; border: 1px solid rgba(183,71,42,0.15);">
+            <p class="text-xs font-semibold uppercase tracking-wider mb-4" style="color: #6B7280;">Contents</p>
+            <nav>
+              <ol class="space-y-2">
+                {tocHeadings.map((h, i) => (
+                  <li>
+                    <a
+                      href={`#${h.slug}`}
+                      class="text-sm transition-colors block leading-snug"
+                      style="color: #6B7280;"
+                      onmouseover="this.style.color='#B7472A'"
+                      onmouseout="this.style.color='#6B7280'"
+                    >
+                      {i + 1}. {h.text}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        </aside>
+      )}
+    </div>
+  </div>
+
+  <!-- Explore Cities -->
+  <section style="background-color: #F0EBE3; padding: 4rem 0;">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2
+        class="font-bold mb-8 text-center"
+        style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 1.5rem;"
+      >
+        Explore the Cities
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {exploreCities.map(city => (
+          <CityCard
+            name={city.data.name}
+            slug={city.id.replace(/\.mdx?$/, '')}
+            region={city.data.region}
+            hook={city.data.hook}
+            gradient={city.data.gradient}
+            image={city.data.image}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const toggle = document.getElementById('toc-toggle');
+  const toc = document.getElementById('toc-mobile');
+  const icon = document.getElementById('toc-icon');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !toc?.classList.contains('hidden');
+    if (isOpen) {
+      toc?.classList.add('hidden');
+      toggle.setAttribute('aria-expanded', 'false');
+      if (icon) icon.textContent = '+';
+    } else {
+      toc?.classList.remove('hidden');
+      toggle.setAttribute('aria-expanded', 'true');
+      if (icon) icon.textContent = '−';
+    }
+  });
+</script>

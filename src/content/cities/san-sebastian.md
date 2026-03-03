@@ -41,3 +41,7 @@ San Sebastián's airport (EAS) is tiny with limited flights. Most visitors fly i
 ## Where to Base Yourself
 
 **Parte Vieja (Old Town)** is the obvious choice — you're steps from the pintxo bars, La Concha beach, and the harbour. It's small and walkable. **Gros** (across the river from the old town) is a great alternative if you want a slightly younger, more local feel — it's the surfing neighbourhood with excellent casual dining. **Centro / Área Romántica** has the most elegant hotels and is centrally positioned between both beaches.
+
+---
+
+*Looking for more? See how San Sebastián compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

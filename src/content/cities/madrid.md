@@ -41,3 +41,7 @@ Madrid-Barajas airport (MAD) is Spain's biggest hub, with connections worldwide.
 ## Where to Base Yourself
 
 **Malasaña** is the best all-round neighbourhood for visitors — walkable to everything, packed with independent restaurants and bars, and full of character without being touristy. **La Latina** is ideal if food is your priority (Sunday Rastro market + the best tapas streets in the city). Avoid Gran Vía for accommodation — it's the equivalent of staying on Times Square.
+
+---
+
+*Looking for more? See how Madrid compares in our guide to the [best cities in Spain to visit](/guides/best-cities-in-spain-to-visit/).*

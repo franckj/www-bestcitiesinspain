@@ -22,4 +22,15 @@ const cities = defineCollection({
   }),
 });
 
-export const collections = { cities };
+const guides = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    datePublished: z.string(),
+    dateModified: z.string(),
+    author: z.string().default('Franck'),
+  }),
+});
+
+export const collections = { cities, guides };
