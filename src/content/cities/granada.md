@@ -9,6 +9,7 @@ airport: "GRX — Federico García Lorca"
 bestMonths: "April, May, September, October"
 avgTemp: "33°C in summer, 7°C in winter"
 gradient: "linear-gradient(135deg, #8B4513 0%, #D2691E 100%)"
+image: "/images/cities/granada.jpg"
 order: 4
 highlights:
   - title: "The Alhambra"

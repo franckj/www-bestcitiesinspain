@@ -9,6 +9,7 @@ airport: "MAD — Barajas"
 bestMonths: "March, April, May, September, October"
 avgTemp: "25°C in summer, 6°C in winter"
 gradient: "linear-gradient(135deg, #2C3E50 0%, #34495E 100%)"
+image: "/images/cities/madrid.jpg"
 order: 2
 highlights:
   - title: "The Prado Museum"

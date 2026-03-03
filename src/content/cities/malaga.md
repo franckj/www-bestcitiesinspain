@@ -9,6 +9,7 @@ airport: "AGP — Costa del Sol"
 bestMonths: "April, May, June, September, October"
 avgTemp: "30°C in summer, 12°C in winter"
 gradient: "linear-gradient(135deg, #3498DB 0%, #2980B9 100%)"
+image: "/images/cities/malaga.jpg"
 order: 8
 highlights:
   - title: "Museo Picasso Málaga"

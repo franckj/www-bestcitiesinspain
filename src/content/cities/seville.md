@@ -9,6 +9,7 @@ airport: "SVQ — San Pablo"
 bestMonths: "March, April, October, November"
 avgTemp: "36°C in summer, 11°C in winter"
 gradient: "linear-gradient(135deg, #D4A017 0%, #B7472A 100%)"
+image: "/images/cities/seville.jpg"
 order: 3
 highlights:
   - title: "Real Alcázar"

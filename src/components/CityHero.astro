@@ -4,35 +4,51 @@ interface Props {
   region: string;
   hook: string;
   gradient: string;
+  image?: string;
 }
 
-const { name, region, hook, gradient } = Astro.props;
+const { name, region, hook, gradient, image } = Astro.props;
 ---
 
-<section style={`background: ${gradient}; padding: 4rem 0 3rem;`}>
-  <div class="max-w-6xl mx-auto px-4">
+<section class="relative w-full overflow-hidden" style="height: clamp(250px, 40vw, 400px);">
+  {image ? (
+    <img
+      src={image}
+      alt={`View of ${name}, Spain`}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+      fetchpriority="high"
+    />
+  ) : (
+    <div class="absolute inset-0" style={`background: ${gradient};`}></div>
+  )}
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 h-full flex flex-col justify-end px-4 pb-8 md:px-12 md:pb-10 max-w-4xl mx-auto w-full">
     <!-- Breadcrumb -->
-    <nav class="mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2 text-sm" style="color: rgba(255,255,255,0.75);">
-        <li><a href="/" style="color: rgba(255,255,255,0.75);" class="hover:text-white transition-colors">Home</a></li>
+    <nav class="mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 text-sm" style="color: rgba(255,255,255,0.7);">
+        <li><a href="/" style="color: rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Home</a></li>
         <li aria-hidden="true">›</li>
-        <li><a href="/#cities" style="color: rgba(255,255,255,0.75);" class="hover:text-white transition-colors">Cities</a></li>
+        <li><a href="/#cities" style="color: rgba(255,255,255,0.7);" class="hover:text-white transition-colors">Cities</a></li>
         <li aria-hidden="true">›</li>
         <li style="color: white;" aria-current="page">{name}</li>
       </ol>
     </nav>
 
-    <!-- Hero content -->
-    <p class="text-sm font-semibold uppercase tracking-widest mb-3" style="color: rgba(255,255,255,0.7);">{region}</p>
+    <p class="text-sm font-semibold uppercase tracking-widest mb-2" style="color: rgba(255,255,255,0.75);">{region}</p>
     <h1
-      class="font-bold mb-4"
-      style="font-family: 'Playfair Display', Georgia, serif; color: white; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; text-shadow: 0 2px 8px rgba(0,0,0,0.25);"
+      class="font-bold mb-3"
+      style="font-family: 'Playfair Display', Georgia, serif; color: white; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; text-shadow: 0 2px 8px rgba(0,0,0,0.4);"
     >
       {name}, Spain
     </h1>
     <p
       class="max-w-2xl"
-      style="color: rgba(255,255,255,0.9); font-size: 1.125rem; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.2);"
+      style="color: rgba(255,255,255,0.92); font-size: 1.05rem; line-height: 1.6; text-shadow: 0 1px 4px rgba(0,0,0,0.4);"
     >
       {hook}
     </p>

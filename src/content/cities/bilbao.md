@@ -9,6 +9,7 @@ airport: "BIO — Loiu"
 bestMonths: "May, June, September, October"
 avgTemp: "20°C in summer, 9°C in winter"
 gradient: "linear-gradient(135deg, #7F8C8D 0%, #2C3E50 100%)"
+image: "/images/cities/bilbao.jpg"
 order: 7
 highlights:
   - title: "Guggenheim Museum"

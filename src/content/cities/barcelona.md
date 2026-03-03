@@ -9,6 +9,7 @@ airport: "BCN — El Prat"
 bestMonths: "May, June, September, October"
 avgTemp: "22°C in summer, 10°C in winter"
 gradient: "linear-gradient(135deg, #E8913A 0%, #B7472A 100%)"
+image: "/images/cities/barcelona.jpg"
 order: 1
 highlights:
   - title: "La Sagrada Família"

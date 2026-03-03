@@ -9,6 +9,7 @@ airport: "VLC — Manises"
 bestMonths: "April, May, June, September, October"
 avgTemp: "28°C in summer, 11°C in winter"
 gradient: "linear-gradient(135deg, #E67E22 0%, #F39C12 100%)"
+image: "/images/cities/valencia.jpg"
 order: 5
 highlights:
   - title: "City of Arts and Sciences"

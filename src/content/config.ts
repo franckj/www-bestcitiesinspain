@@ -13,6 +13,7 @@ const cities = defineCollection({
     bestMonths: z.string(),
     avgTemp: z.string(),
     gradient: z.string(),
+    image: z.string().optional(),
     highlights: z.array(z.object({
       title: z.string(),
       description: z.string(),

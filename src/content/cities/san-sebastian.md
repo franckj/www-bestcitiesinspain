@@ -9,6 +9,7 @@ airport: "EAS — San Sebastián (or BIO — Bilbao, 1hr away)"
 bestMonths: "June, July, August, September"
 avgTemp: "21°C in summer, 8°C in winter"
 gradient: "linear-gradient(135deg, #1ABC9C 0%, #16A085 100%)"
+image: "/images/cities/san-sebastian.jpg"
 order: 6
 highlights:
   - title: "Pintxo Bars of the Parte Vieja"
