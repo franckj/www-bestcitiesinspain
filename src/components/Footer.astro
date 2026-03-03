@@ -10,34 +10,52 @@ const cities = [
   { name: 'Málaga', slug: 'malaga' },
 ];
 
+const guides = [
+  { label: 'Best Cities to Visit', href: '/guides/best-cities-in-spain-to-visit/' },
+];
+
 const infoLinks = [
   { label: 'About', href: '/about/' },
   { label: 'Contact', href: '/contact/' },
-  { label: 'Privacy', href: '/privacy/' },
-  { label: 'Terms', href: '/terms/' },
+  { label: 'Privacy Policy', href: '/privacy/' },
+  { label: 'Terms of Service', href: '/terms/' },
   { label: 'Disclaimer', href: '/disclaimer/' },
 ];
+
+const showGuidesPlaceholder = guides.length < 3;
 ---
 
 <footer style="background-color: #1A1A1A; color: #FAF7F2;">
-  <div class="max-w-6xl mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+  <div class="max-w-6xl mx-auto px-4 py-12 lg:py-16">
+
+    <!-- 4-column grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+
       <!-- Column 1: Brand -->
-      <div>
-        <a href="/" class="font-bold text-xl block mb-3" style="font-family: 'Playfair Display', Georgia, serif;">
-          <span style="color: #D4A017;">bestcities</span><span style="color: #FAF7F2;">in</span><span style="color: #D4A017;">spain</span>
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="/" class="inline-block font-bold text-xl mb-3" style="font-family: 'Playfair Display', Georgia, serif;">
+          <span style="color: #D4A017;">best</span><span style="color: #B7472A;">cities</span><span style="color: #D4A017;">inspain</span>
         </a>
-        <p class="text-sm mb-3" style="color: #9CA3AF;">
-          An independent guide to Spain's greatest cities — where to go, when to visit, and why it matters.
+        <p class="text-sm mb-2" style="color: #9CA3AF; line-height: 1.6;">
+          An independent guide to Spain's greatest cities.
         </p>
-        <p class="text-xs" style="color: #6B7280;">
-          Not affiliated with any Spanish tourism board or government body.
+        <p class="text-xs mb-4" style="color: #6B7280;">
+          Not affiliated with any Spanish tourism board.
         </p>
+        <a
+          href="mailto:hola@bestcitiesinspain.com"
+          class="text-sm transition-colors duration-200"
+          style="color: #D4A017;"
+          onmouseover="this.style.color='#FAF7F2'"
+          onmouseout="this.style.color='#D4A017'"
+        >
+          hola@bestcitiesinspain.com
+        </a>
       </div>
 
       <!-- Column 2: Cities -->
       <div>
-        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: #6B7280;">Cities</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: #6B7280;">Cities</h3>
         <ul class="space-y-2">
           {cities.map(city => (
             <li>
@@ -45,7 +63,7 @@ const infoLinks = [
                 href={`/${city.slug}/`}
                 class="text-sm transition-colors duration-200"
                 style="color: #9CA3AF;"
-                onmouseover="this.style.color='#FAF7F2'"
+                onmouseover="this.style.color='#D4A017'"
                 onmouseout="this.style.color='#9CA3AF'"
               >
                 {city.name}
@@ -55,9 +73,32 @@ const infoLinks = [
         </ul>
       </div>
 
-      <!-- Column 3: Info -->
+      <!-- Column 3: Guides -->
       <div>
-        <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: #6B7280;">Info</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: #6B7280;">Guides</h3>
+        <ul class="space-y-2">
+          {guides.map(guide => (
+            <li>
+              <a
+                href={guide.href}
+                class="text-sm transition-colors duration-200"
+                style="color: #9CA3AF;"
+                onmouseover="this.style.color='#D4A017'"
+                onmouseout="this.style.color='#9CA3AF'"
+              >
+                {guide.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {showGuidesPlaceholder && (
+          <p class="text-xs mt-3" style="color: #4B5563; font-style: italic;">More guides coming soon</p>
+        )}
+      </div>
+
+      <!-- Column 4: Info -->
+      <div>
+        <h3 class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: #6B7280;">Info</h3>
         <ul class="space-y-2">
           {infoLinks.map(link => (
             <li>
@@ -65,7 +106,7 @@ const infoLinks = [
                 href={link.href}
                 class="text-sm transition-colors duration-200"
                 style="color: #9CA3AF;"
-                onmouseover="this.style.color='#FAF7F2'"
+                onmouseover="this.style.color='#D4A017'"
                 onmouseout="this.style.color='#9CA3AF'"
               >
                 {link.label}
@@ -73,17 +114,16 @@ const infoLinks = [
             </li>
           ))}
         </ul>
-        <p class="mt-6 text-sm" style="color: #9CA3AF;">
-          <a href="mailto:hola@bestcitiesinspain.com" style="color: #D4A017;">hola@bestcitiesinspain.com</a>
-        </p>
       </div>
     </div>
 
     <!-- Bottom bar -->
-    <div class="pt-8 border-t" style="border-color: #2A2A2A;">
-      <p class="text-xs text-center" style="color: #6B7280;">
-        © 2026 bestcitiesinspain.com · An independent travel guide — not affiliated with any Spanish tourism board.
-      </p>
+    <div
+      class="mt-12 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2"
+      style="border-top: 1px solid #374151;"
+    >
+      <p class="text-xs" style="color: #6B7280;">© 2026 bestcitiesinspain.com</p>
+      <p class="text-xs" style="color: #6B7280;">An independent travel guide</p>
     </div>
   </div>
 </footer>
