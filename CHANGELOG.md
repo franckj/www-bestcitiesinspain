@@ -2,6 +2,9 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-10-14: session closed
+- Live: 8 cities, 6 guides, 45 tours, live weather on city pages (added today). Next check: day-42 read on 2026-11-25. Waiting on Franck: nothing.
+
 ## 2026-10-14: live weather on place pages
 - 3-day forecast (MET Norway, CC BY 4.0) on all 8 place pages, via a Pages Function at `/api/meteo?place=<slug>` that caches until MET's Expires and sends an identifying User-Agent. Coordinates from each page's lat/lng.
 - Files: functions/api/meteo.js, src/components/Weather.astro, styles in global.css.
