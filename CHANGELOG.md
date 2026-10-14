@@ -2,6 +2,10 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-10-14: live weather on place pages
+- 3-day forecast (MET Norway, CC BY 4.0) on all 8 place pages, via a Pages Function at `/api/meteo?place=<slug>` that caches until MET's Expires and sends an identifying User-Agent. Coordinates from each page's lat/lng.
+- Files: functions/api/meteo.js, src/components/Weather.astro, styles in global.css.
+
 ## 2026-10-14 (later) — Hero button wording
 
 - Primary hero button now reads "Browse city tours & tickets" (was "Browse Spain tours"), matching the GetYourGuide Spain page it opens, which leads with city tickets. Franck asked for better wording.

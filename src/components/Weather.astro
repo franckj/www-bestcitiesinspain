@@ -1,0 +1,29 @@
+---
+// 3-day forecast from /api/meteo?place=<slug> (Pages Function proxying MET Norway, CC BY 4.0).
+// Hidden until the forecast loads; renders nothing visible if the call fails.
+interface Props { place: string; name: string }
+const { place, name } = Astro.props;
+const L = { wind: 'Mean wind up to', other: 'Mixed', labels: { clearsky: 'Sunny', fair: 'Fair', partlycloudy: 'Partly cloudy', cloudy: 'Cloudy', fog: 'Fog', lightrain: 'Light rain', rain: 'Rain', heavyrain: 'Heavy rain', lightrainshowers: 'Light showers', rainshowers: 'Showers', heavyrainshowers: 'Heavy showers', rainandthunder: 'Rain and thunder', lightrainandthunder: 'Rain and thunder', heavyrainandthunder: 'Thunderstorms', rainshowersandthunder: 'Thundery showers', lightsnow: 'Light snow', snow: 'Snow', sleet: 'Sleet' } };
+---
+<section class="weather" aria-labelledby="weather" data-place={place} hidden>
+  <h2 id="weather">Weather in {name} this week</h2>
+  <ul class="weather-days"></ul>
+  <p class="weather-src">Forecast by <a href="https://www.met.no/en" rel="noopener">MET Norway</a> (licence <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>), updated <time></time> (Spanish time). Wind: highest mean speed forecast for the day, not gusts.</p>
+</section>
+<script is:inline define:vars={{ L }}>
+  (function () {
+    var box = document.querySelector('.weather');
+    if (!box) return;
+    var label = function (s) { return s ? L.labels[s.replace(/_(day|night|polartwilight)$/, '')] || L.other : L.other; };
+    var day = function (iso) { return new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }); };
+    fetch('/api/meteo?place=' + encodeURIComponent(box.dataset.place)).then(function (r) { return r.ok ? r.json() : Promise.reject(); }).then(function (w) {
+      box.querySelector('.weather-days').innerHTML = w.days.map(function (d) {
+        return '<li><b>' + day(d.date) + '</b><span class="w-sum">' + label(d.symbol) + '</span><span class="w-t">' + d.min + '° / ' + d.max + '°C</span><span class="w-wind">' + L.wind + ' ' + d.wind + ' km/h</span></li>';
+      }).join('');
+      var t = box.querySelector('time');
+      t.dateTime = w.updated;
+      t.textContent = new Date(w.updated).toLocaleString('en-GB', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit', timeZone: 'Europe/Madrid' });
+      box.hidden = false;
+    }).catch(function () {});
+  })();
+</script>

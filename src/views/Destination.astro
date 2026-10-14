@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Article from '../layouts/Article.astro';
 import Tours from '../components/Tours.astro';
+import Weather from '../components/Weather.astro';
 import { relatedCards } from '../lib/related';
 import { byPlace } from '../lib/tours';
 import { src } from '../lib/photos';
@@ -33,5 +34,6 @@ const place = destinationSchema({ name: d.name, description: d.description, lat:
     {tours.length > 0 && (
       <section><h2 id="tours">{t.toursInclude(d.name)}</h2><Tours tours={tours} /></section>
     )}
+    {lang === 'en' && <Weather place={entry.id} name={d.name} />}
   </Fragment>
 </Article>
