@@ -27,7 +27,7 @@ const guides = await relatedCards(GUIDE_ORDER, lang);
 const schema = [
   publisher,
   websiteFor(lang),
-  { ...destinationSchema({ name: c.placeName, description: d.description, lat: 45.953, lng: 12.2261, path: h('/'), image: src(hero.slug, 1600) }) },
+  { ...destinationSchema({ name: c.placeName, description: d.description, lat: 39.3261, lng: -4.838, path: h('/'), image: src(hero.slug, 1600) }) },
   { ...faqSchema(d.faq), '@id': `${SITE.url}${h('/')}#faq` },
 ];
 ---
