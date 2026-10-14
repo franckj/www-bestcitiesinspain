@@ -10,10 +10,10 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const HOST = 'visitprosecco.com';
+const HOST = 'bestcitiesinspain.com';
 
 // Any 8-128 char hex string works; it just has to match the served key file.
-const KEY = '04a6abf7dd689643e19c25492a0a09f3';
+const KEY = '9b8b384114d2e3f07eb280e11d696675';
 const keyFile = join(root, 'public', `${KEY}.txt`);
 if (!existsSync(keyFile)) {
   writeFileSync(keyFile, KEY);
