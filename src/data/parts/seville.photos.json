@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Plaza de España, Seville 4",
+    "author": "kallerna",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plaza_de_España,_Seville_4.jpg",
+    "description": "Plaza de España in Seville, with its brick towers, arcades and tiled bridges over the canal",
+    "width": 1600,
+    "height": 1066,
+    "slug": "seville"
+  },
+  {
+    "title": "Barrio de Santa Cruz, Sevilla. Portal",
+    "author": "José Luis Filpo Cabana",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barrio_de_Santa_Cruz,_Sevilla._Portal.jpg",
+    "description": "Entrance to a whitewashed patio with potted plants in the Barrio de Santa Cruz, Seville",
+    "width": 1600,
+    "height": 1202,
+    "slug": "seville-2"
+  }
+]

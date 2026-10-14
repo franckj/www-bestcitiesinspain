@@ -1,0 +1,144 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { getCollection } from 'astro:content';
+import { SITE, GYG, GYG_LOCATION, GUIDE_ORDER, DEST_ORDER, shortName } from '../lib/site';
+import { T, langOf, href, altPath, col, OG_LOCALE, ENABLED } from '../lib/i18n';
+
+interface Props {
+  title: string;
+  description: string;
+  schema?: object[];
+  ogType?: string;
+  noindex?: boolean;
+  ogImage?: string;
+  preload?: string;
+}
+const { title, description, schema = [], ogType = 'article', noindex = false, ogImage: ogPath, preload } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = `${SITE.url}${ogPath ?? '/og.jpg'}`;
+const path = Astro.url.pathname;
+const jsonLd = schema.length ? JSON.stringify({ '@context': 'https://schema.org', '@graph': schema }) : null;
+const lang = langOf(Astro.url);
+const t = T[lang];
+const nav = t.nav.map(([p, label]) => ({ href: href(lang, p), label }));
+const dests = await getCollection(col('destinations', lang));
+const destName = (s: string) => dests.find((e) => e.id === s)?.data.name ?? s;
+// Every page exists in both languages (same slugs), so each page points to its twin.
+const multi = ENABLED.length > 1;
+const alt = { en: new URL(altPath(path, 'en'), SITE.url).href, de: new URL(altPath(path, 'de'), SITE.url).href };
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {multi && !noindex && (
+      <Fragment>
+        <link rel="alternate" hreflang="en" href={alt.en} />
+        <link rel="alternate" hreflang="de" href={alt.de} />
+        <link rel="alternate" hreflang="x-default" href={alt.en} />
+      </Fragment>
+    )}
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#faf7f0" />
+    <link rel="preload" href="/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    {preload && <link rel="preload" as="image" href={preload} fetchpriority="high" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={OG_LOCALE[lang]} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+    <!-- GetYourGuide partner script (Integration Analyzer, and it renders any widget on the page) -->
+    <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id={GYG.partnerId}></script>
+    {!SITE.plausible && (SITE as any).plausibleDomain && (
+      <Fragment>
+        <!-- Privacy-friendly analytics by Plausible (standard script, by domain) -->
+        <script defer data-domain={(SITE as any).plausibleDomain} src="https://plausible.io/js/script.js"></script>
+        <script is:inline>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) };</script>
+      </Fragment>
+    )}
+    {SITE.plausible && (
+      <Fragment>
+        <!-- Privacy-friendly analytics by Plausible -->
+        <script async src={SITE.plausible}></script>
+        <script is:inline>
+          window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+          plausible.init()
+        </script>
+      </Fragment>
+    )}
+    <!-- Stay22 Let Me Allez (account lmaID): turns Booking/Expedia links into affiliate links. -->
+    <script is:inline>
+      (function (s, t, a, y, twenty, two) { s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '6abe3ba1824fe0ab2e736984' };
+        twenty = t.createElement(a); two = t.getElementsByTagName(a)[0]; twenty.async = 1; twenty.src = y; two.parentNode.insertBefore(twenty, two);
+      })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.skip}</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href={href(lang, '/')}><Logo /><span class="brand-name">{SITE.name}</span></a>
+        <nav class="nav" aria-label="Main">
+          {nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
+          {multi && !noindex && <a class="lang-switch" href={lang === 'de' ? altPath(path, 'en') : altPath(path, 'de')} hreflang={lang === 'de' ? 'en' : 'de'} lang={lang === 'de' ? 'en' : 'de'}>{t.langSwitch}</a>}
+          <a class="nav-cta" href={GYG.link(GYG_LOCATION, lang)} rel="sponsored noopener" target="_blank" data-gyg="header">{t.bookTour}</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="footer-grid">
+          <div>
+            <h2>{SITE.name}</h2>
+            <p>{t.footerAbout}</p>
+          </div>
+          <div>
+            <h2>{t.plan}</h2>
+            <ul>
+              <li><a href={href(lang, '/')}>{t.howToVisit}</a></li>
+              {GUIDE_ORDER.map((s) => <li><a href={href(lang, `/${s}/`)}>{shortName(s, lang)}</a></li>)}
+            </ul>
+          </div>
+          <div>
+            <h2>{t.places}</h2>
+            <ul>{DEST_ORDER.map((s) => <li><a href={href(lang, `/destinations/${s}/`)}>{destName(s)}</a></li>)}</ul>
+          </div>
+          <div>
+            <h2>{t.about}</h2>
+            <ul>
+              <li><a href={href(lang, '/about/')}>{t.aboutGuide}</a></li>
+              <li><a href={href(lang, '/contact/')}>{t.contact}</a></li>
+              <li><a href={href(lang, '/affiliate-disclosure/')}>{t.affiliate}</a></li>
+              <li><a href={href(lang, '/privacy/')}>{t.privacy}</a></li>
+              <li><a href={href(lang, '/image-credits/')}>{t.credits}</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="fine" set:html={t.fine(new Date().getFullYear())} />
+      </div>
+    </footer>
+    <script is:inline>
+      // Counts outbound clicks to GetYourGuide as the Plausible goal "outbound_gyg".
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest && e.target.closest('a[data-gyg]');
+        if (a && window.plausible) window.plausible('outbound_gyg', { props: { tour: a.dataset.gyg, page: location.pathname } });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Places from '../components/Places.astro';
+import { breadcrumbSchema } from '../lib/site';
+import { T, href, type Lang } from '../lib/i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const crumbs = [{ name: T[lang].home, path: href(lang, '/') }, { name: T[lang].places, path: href(lang, '/destinations/') }];
+const c = {
+  en: {
+    title: 'The 8 Best Cities in Spain: City Guides | Best Cities in Spain',
+    description: 'City guides to Madrid, Barcelona, Seville, Granada, Valencia, Málaga, San Sebastián and Bilbao: who each suits, how many days, what to see and what to book.',
+    h1: 'The best cities in Spain, one by one',
+    lede: 'Eight cities, each with a page that says who it suits, how many days to give it, what to book ahead and how to get there by train.',
+  },
+  de: {
+    title: 'Sehenswürdigkeiten in den Prosecco-Hügeln | Visit Prosecco',
+    description: 'Orte und Sehenswürdigkeiten in den Prosecco-Hügeln und drumherum: Valdobbiadene, Conegliano, Cartizze, Follina, Cison di Valmarino, Asolo und mehr.',
+    h1: 'Sehenswerte Orte in den Prosecco-Hügeln',
+    lede: 'Conegliano im Osten und Valdobbiadene im Westen liegen 33 km auseinander, mit dem Auto etwa 45 Minuten. Diese Orte decken die Städte, den berühmtesten Weinberg, die Sehenswürdigkeiten zwischen den Weingütern und die Hügelstädte gleich nebenan ab.',
+  },
+}[lang];
+---
+<Base title={c.title} description={c.description} schema={[breadcrumbSchema(crumbs)]} ogType="website">
+  <div class="wrap">
+    <Crumbs items={crumbs} />
+    <div class="article wide" style="padding-bottom:1rem">
+      <h1>{c.h1}</h1>
+      <p class="lede" style="max-width:46rem">{c.lede}</p>
+    </div>
+    <Places />
+  </div>
+</Base>

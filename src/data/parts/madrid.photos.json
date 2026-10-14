@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Royal Palace of Madrid east facade",
+    "author": "kallerna",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Royal_Palace_of_Madrid_east_facade_1.jpg",
+    "description": "The east façade of the Royal Palace of Madrid.",
+    "width": 1600,
+    "height": 1053,
+    "slug": "madrid"
+  },
+  {
+    "title": "Plaza Mayor de Madrid",
+    "author": "Carlos Delgado",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plaza_Mayor_de_Madrid_-_01.jpg",
+    "description": "Plaza Mayor, Madrid's arcaded main square.",
+    "width": 1600,
+    "height": 1200,
+    "slug": "madrid-2"
+  }
+]

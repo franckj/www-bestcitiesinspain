@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import Destination from '../../views/Destination.astro';
+
+export async function getStaticPaths() {
+  const dests = await getCollection('destinations');
+  return dests.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+---
+<Destination entry={Astro.props.entry} lang="en" />

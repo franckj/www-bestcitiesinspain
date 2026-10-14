@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import { DEST_ORDER } from '../lib/site';
+import { col, href, langOf } from '../lib/i18n';
+import Photo from './Photo.astro';
+interface Props { exclude?: string }
+const { exclude } = Astro.props;
+const lang = langOf(Astro.url);
+const all = await getCollection(col('destinations', lang));
+const list = DEST_ORDER.filter((s) => s !== exclude).map((s) => all.find((e) => e.id === s)!).filter(Boolean);
+---
+<ul class="places">
+  {list.map((d) => (
+    <li class="place">
+      <Photo slug={d.data.photo} sizes="(min-width: 720px) 22rem, 100vw" />
+      <div>
+        <h3><a href={href(lang, `/destinations/${d.id}/`)}>{d.data.name}</a></h3>
+        <p>{d.data.short}</p>
+      </div>
+    </li>
+  ))}
+</ul>

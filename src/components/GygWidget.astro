@@ -1,0 +1,8 @@
+---
+import { GYG, GYG_LOCATION } from '../lib/site';
+import { langOf, LOCALE } from '../lib/i18n';
+const locale = langOf(Astro.url) === 'de' ? 'de-DE' : 'en-US';
+// GetYourGuide activities widget (format from the partner portal), searching "Spain".
+// Rendered by the partner script in <head>; third-party JS, so tour-heavy pages only.
+---
+<div class="gyg-widget" data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code={locale} data-gyg-widget="activities" data-gyg-number-of-items="3" data-gyg-partner-id={GYG.partnerId} data-gyg-q="Spain"><span>Powered by <a target="_blank" rel="sponsored" href={GYG_LOCATION}>GetYourGuide</a></span></div>

@@ -1,59 +1,13 @@
 ---
-import BaseLayout from '../components/BaseLayout.astro';
-
-const schema = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Franck",
-  "url": "https://bestcitiesinspain.com/about/",
-  "sameAs": ["https://ilovecatalonia.com/about/"]
-});
+import Simple from '../layouts/Simple.astro';
 ---
-
-<BaseLayout
-  title="About Best Cities in Spain — Who's Behind This Guide"
-  description="An independent travel guide to Spain's greatest cities. Not a tourism board, not a hotel chain. Written by Franck, based on real trips and honest opinions."
-  schema={schema}
->
-  <div style="max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem;">
-    <h1
-      class="font-bold mb-8"
-      style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 2.25rem; line-height: 1.2;"
-    >
-      About Best Cities in Spain
-    </h1>
-
-    <div class="prose-city">
-      <p>
-        Best Cities in Spain is an independent travel guide to the cities that make this country one of Europe's most compelling destinations. We're not affiliated with any Spanish tourism board, hotel chain, or tour operator.
-      </p>
-
-      <p>
-        Spain draws over 85 million visitors a year — more than almost any country on Earth. Most of them head straight to Barcelona or Madrid, and plenty never make it beyond the resort coasts. That's a mistake. The real Spain lives in the tapas bars of Seville, the pintxo crawls of San Sebastián, the street art of Málaga, and the Moorish courtyards of Granada.
-      </p>
-
-      <p>
-        This site exists to help you figure out which cities are actually worth your time — and how to make the most of them when you get there. Every recommendation is based on personal experience, not press trips or sponsored content.
-      </p>
-
-      <h2>What we cover</h2>
-      <p>
-        We focus on Spain's cities — not resorts, not beaches (unless they're part of a city worth visiting), not rural retreats. For each city, you'll find honest assessments of what to see, when to go, where to base yourself, and what most guides get wrong.
-      </p>
-
-      <h2>What we don't do</h2>
-      <p>
-        We don't accept payment for recommendations. We don't rank cities based on who has the best affiliate program. If we recommend a tour or a hotel booking platform, it's because we'd use it ourselves — and yes, we may earn a commission if you book through our links. That's how we keep this site running without putting it behind a paywall.
-      </p>
-
-      <h2>Who's behind this</h2>
-      <p>
-        This guide is written and maintained by Franck — a France-based travel writer, builder of independent regional guides, and firm believer that the best way to understand a country is through its cities. You can also find his work at <a href="https://ilovecatalonia.com" target="_blank" rel="noopener">ilovecatalonia.com</a>.
-      </p>
-
-      <p>
-        Have a question or a correction? Reach out at <a href="mailto:hello@bestcitiesinspain.com">hello@bestcitiesinspain.com</a>.
-      </p>
-    </div>
-  </div>
-</BaseLayout>
+<Simple title="About this guide" seoTitle="About Best Cities in Spain | Independent City Guide" description="Who writes Best Cities in Spain, how we check facts, how the site makes money, and why we're not linked to any tourist board." path="/about/">
+  <p class="lede">Best Cities in Spain is an independent English guide to eight Spanish cities for a first visit: Madrid, Barcelona, Seville, Granada, Valencia, Málaga, San Sebastián and Bilbao. It helps you choose between them, plan the trains and book the tickets that sell out.</p>
+  <h2>Independent</h2>
+  <p><strong>Independent travel guide, not affiliated with any Spanish tourist board.</strong> No city, hotel, museum or tour operator pays to appear here or to be ranked.</p>
+  <h2>How we check facts</h2>
+  <p>Every page shows the date it was last checked. Facts come from primary sources where they exist: the monuments' and museums' own sites, Renfe and the other train operators, the cities' tourist offices and UNESCO. Where a page gives a time or a price, it links to where we found it. Timetables and prices change, so check the operator's site before you travel.</p>
+  <p>Tour prices and ratings are copied from GetYourGuide on the date shown next to them. They are GetYourGuide's prices, not ours.</p>
+  <h2>How the site makes money</h2>
+  <p>When you book a tour through a GetYourGuide link, or a stay through a Booking.com link, on this site, we may earn a commission. You pay the same price. See the <a href="/affiliate-disclosure/">affiliate disclosure</a>.</p>
+</Simple>

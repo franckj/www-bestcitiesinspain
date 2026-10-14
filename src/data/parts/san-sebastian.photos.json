@@ -1,0 +1,24 @@
+[
+ {
+  "title": "Kontxa bay",
+  "author": "Kent Wang",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kontxa_bay.jpg",
+  "description": "La Concha bay in San Sebastián seen from Monte Igueldo, with Santa Clara island and Monte Urgull on the left",
+  "width": 1600,
+  "height": 1067,
+  "slug": "san-sebastian"
+ },
+ {
+  "title": "Barra de pintxos Donosti 01",
+  "author": "Basotxerri",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "sourceUrl": "https://commons.wikimedia.org/wiki/File:Barra_de_pintxos_Donosti_01.JPG",
+  "description": "Plates of pintxos on the counter of a bar in San Sebastián",
+  "width": 1600,
+  "height": 1200,
+  "slug": "san-sebastian-2"
+ }
+]

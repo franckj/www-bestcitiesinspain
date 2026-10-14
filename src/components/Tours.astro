@@ -1,0 +1,36 @@
+---
+import { groupKind, tourHref, lastChecked, cardPhotos, type Tour } from '../lib/tours';
+import { photo, src } from '../lib/photos';
+import { T, langOf, href, fmtIsoL, LOCALE } from '../lib/i18n';
+interface Props { tours: Tour[]; showKind?: boolean }
+const { tours, showKind = true } = Astro.props;
+const lang = langOf(Astro.url);
+const t = T[lang];
+const num = (n: number) => n.toLocaleString(LOCALE[lang]);
+const euro = (n: number) => (lang === 'de' ? `${num(n)} €` : '€' + num(n));
+const pics = cardPhotos(tours).map((slug) => photo(slug));
+---
+{tours.length > 0 && (
+  <Fragment>
+    <ul class="tours">
+      {tours.map((tr, i) => (
+        <li class="tour">
+          {pics[i] && <img class="tour-img" src={src(pics[i]!.slug, 800)} width="800" height={Math.round((pics[i]!.height * 800) / pics[i]!.width)} alt="" loading="lazy" decoding="async" />}
+          {showKind && <p class="tour-kind">{groupKind(tr.group, lang)}</p>}
+          <h3><a href={tourHref(tr, lang)} rel="sponsored noopener" target="_blank" data-gyg={tr.id}>{(lang === 'de' && tr.title_de) || tr.title}</a></h3>
+          {tr.summary && <p class="tour-sum">{(lang === 'de' && tr.summary_de) || tr.summary}</p>}
+          <p class="tour-meta">
+            {tr.duration && <span>{lang === 'de' ? tr.duration.replace(/\bh\b/, 'Std.') : tr.duration}</span>}
+            {tr.start && <span>{t.start}: {tr.start}</span>}
+            {tr.rating && <span>★ {lang === 'de' ? tr.rating.toFixed(1).replace('.', ',') : tr.rating.toFixed(1)}{tr.reviews ? ` (${num(tr.reviews)} ${t.reviews})` : ''}</span>}
+          </p>
+          <p class="tour-price">
+            <span>{tr.priceFrom ? <Fragment>{t.from}{' '}<strong>{euro(tr.priceFrom)}</strong>{tr.priceUnit === 'group' ? t.perGroup : ''}</Fragment> : t.seePrice}</span>
+            <span class="tour-cta">{t.onGyg}</span>
+          </p>
+        </li>
+      ))}
+    </ul>
+    <p class="disclose">{t.disclose(fmtIsoL(lastChecked(tours), lang))} <a href={href(lang, '/affiliate-disclosure/')}>{t.howWorks}</a>.</p>
+  </Fragment>
+)}

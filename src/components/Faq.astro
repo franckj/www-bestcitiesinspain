@@ -1,0 +1,17 @@
+---
+import { marked } from '../lib/inline-md';
+import { T, langOf } from '../lib/i18n';
+interface Props { faq: { q: string; a: string }[]; heading?: string }
+const { faq, heading = T[langOf(Astro.url)].faq } = Astro.props;
+---
+{faq.length > 0 && (
+  <section class="faq" aria-labelledby="faq">
+    <h2 id="faq">{heading}</h2>
+    {faq.map((f) => (
+      <div class="faq-item">
+        <h3>{f.q}</h3>
+        <p set:html={marked(f.a)} />
+      </div>
+    ))}
+  </section>
+)}

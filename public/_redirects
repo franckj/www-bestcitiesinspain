@@ -1,1 +1,22 @@
-/* /404.html 404
+# Old network-template URLs (Feb 2026 build) -> geo kit v2 (2026-10-14)
+/madrid /destinations/madrid/ 301
+/madrid/ /destinations/madrid/ 301
+/barcelona /destinations/barcelona/ 301
+/barcelona/ /destinations/barcelona/ 301
+/seville /destinations/seville/ 301
+/seville/ /destinations/seville/ 301
+/granada /destinations/granada/ 301
+/granada/ /destinations/granada/ 301
+/valencia /destinations/valencia/ 301
+/valencia/ /destinations/valencia/ 301
+/malaga /destinations/malaga/ 301
+/malaga/ /destinations/malaga/ 301
+/san-sebastian /destinations/san-sebastian/ 301
+/san-sebastian/ /destinations/san-sebastian/ 301
+/bilbao /destinations/bilbao/ 301
+/bilbao/ /destinations/bilbao/ 301
+/guides/best-cities-in-spain-to-visit /  301
+/guides/best-cities-in-spain-to-visit/ / 301
+/guides/ / 301
+/disclaimer/ /affiliate-disclosure/ 301
+/terms/ /about/ 301

@@ -1,0 +1,114 @@
+---
+import { getEntry, render } from 'astro:content';
+import { T, href, col, fmtDateL, type Lang } from '../lib/i18n';
+import Base from '../layouts/Base.astro';
+import Tours from '../components/Tours.astro';
+import Places from '../components/Places.astro';
+import Cards from '../components/Cards.astro';
+import Faq from '../components/Faq.astro';
+import GygWidget from '../components/GygWidget.astro';
+import { photo, src, altText } from '../lib/photos';
+import { byIds } from '../lib/tours';
+import { relatedCards } from '../lib/related';
+import { SITE, GUIDE_ORDER, DEST_ORDER, GYG, GYG_LOCATION, websiteFor, publisher, faqSchema, destinationSchema, isoDate } from '../lib/site';
+import HOME_TEXT from './home-text';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const c = HOME_TEXT[lang];
+const h = (p: string) => href(lang, p);
+
+const home = (await getEntry(col('guides', lang), 'home'))!;
+const { Content } = await render(home);
+const d = home.data;
+const hero = photo(d.photo)!;
+const tours = byIds(d.featured);
+const guides = await relatedCards(GUIDE_ORDER, lang);
+const schema = [
+  publisher,
+  websiteFor(lang),
+  { ...destinationSchema({ name: c.placeName, description: d.description, lat: 45.953, lng: 12.2261, path: h('/'), image: src(hero.slug, 1600) }) },
+  { ...faqSchema(d.faq), '@id': `${SITE.url}${h('/')}#faq` },
+];
+---
+<Base title={d.seoTitle} description={d.description} schema={schema} ogType="website" preload={src(hero.slug, 1600)}>
+  <section class="hero">
+    <img class="hero-img" src={src(hero.slug, 1600)} srcset={`${src(hero.slug, 800)} 800w, ${src(hero.slug, 1600)} 1600w`} sizes="100vw" width={hero.width} height={hero.height} alt={altText(hero, lang)} fetchpriority="high" />
+    <a class="hero-credit" href={h('/image-credits/')}>{T[lang].photo}: {hero.author}</a>
+    <div class="hero-text">
+      <div class="wrap">
+        <p class="eyebrow">{c.eyebrow}</p>
+        <h1>{d.title}</h1>
+        <p>{c.heroSub}</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gyg" href={GYG.link(GYG_LOCATION, lang)} rel="sponsored noopener" target="_blank" data-gyg="hero">{c.ctaTours} →</a>
+          <a class="btn btn-ghost" href={h('/destinations/')}>{c.ctaPlaces}</a>
+        </div>
+        <ul class="hero-proof">
+          <li>✓ {c.proofGuides(DEST_ORDER.length, GUIDE_ORDER.length)}</li>
+          <li>✓ {c.proofTours}</li>
+          <li>✓ {c.proofIndep}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="intro" aria-label={c.introLabel}>
+      <div>
+        <p class="lede">{d.summary}</p>
+        <p class="meta">{T[lang].lastChecked} <time datetime={isoDate(d.updated)}>{fmtDateL(d.updated, lang)}</time></p>
+      </div>
+      <div class="prose"><Content /></div>
+    </section>
+
+    <section class="section" aria-labelledby="tours">
+      <div class="section-head">
+        <h2 id="tours">{c.toursH}</h2>
+        <a href={h('/spain-tours/')}>{c.toursAll}</a>
+      </div>
+      <Tours tours={tours} />
+      <GygWidget />
+    </section>
+
+    <section class="section" aria-labelledby="suits">
+      <h2 id="suits">{c.suitsH}</h2>
+      <ul class="choose">
+        {c.suits.map((x) => <li><h3><a href={h(x.path)}>{x.name}</a></h3><p><b>{x.who}</b> {x.text}</p></li>)}
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="seasons">
+      <div class="section-head">
+        <h2 id="seasons">{c.seasonsH}</h2>
+        <a href={h(c.seasonsPath)}>{c.seasonsAll}</a>
+      </div>
+      <ul class="choose">
+        {c.seasons.map((x) => <li><h3>{x.name}</h3><p>{x.text}</p></li>)}
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="places">
+      <div class="section-head">
+        <h2 id="places">{c.placesH}</h2>
+        <a href={h('/destinations/')}>{c.placesAll}</a>
+      </div>
+      <Places />
+    </section>
+
+    <section class="section" aria-labelledby="guides">
+      <h2 id="guides">{c.guidesH}</h2>
+      <Cards items={guides} />
+    </section>
+
+    <section class="band">
+      <div>
+        <h2>{c.bandH}</h2>
+        <p>{c.bandText} <a href={h('/itineraries/')}>{c.bandLink}</a>.</p>
+      </div>
+      <a class="btn" href={h('/spain-tours/')}>{c.bandBtn}</a>
+    </section>
+
+    <Faq faq={d.faq} />
+  </div>
+</Base>

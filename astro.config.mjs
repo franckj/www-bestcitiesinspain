@@ -1,13 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import { unified } from '@astrojs/markdown-remark';
+import rehypeWrapTables from './src/lib/rehype-wrap-tables.mjs';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://bestcitiesinspain.com',
-  integrations: [sitemap()],
-  vite: {
-    plugins: [tailwindcss()]
-  }
+  trailingSlash: 'always',
+  output: 'static',
+  build: { format: 'directory', inlineStylesheets: 'always' },
+  markdown: { processor: unified({ rehypePlugins: [rehypeWrapTables] }) },
+  integrations: [
+    sitemap({
+      filter: (page) => !page.endsWith('/404/'),
+    }),
+  ],
 });

@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Vista de Málaga desde la Alcazaba",
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Vista_de_M%C3%A1laga_desde_la_Alcazaba,_Espa%C3%B1a,_2023-05-20,_DD_90.jpg",
+    "description": "Málaga's centre and port seen from the Alcazaba",
+    "width": 1600,
+    "height": 647,
+    "slug": "malaga"
+  },
+  {
+    "title": "Teatro romano, Málaga",
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Teatro_romano,_M%C3%A1laga,_Espa%C3%B1a,_2023-05-20,_DD_11.jpg",
+    "description": "The Roman theatre at the foot of the Alcazaba in Málaga",
+    "width": 1600,
+    "height": 1067,
+    "slug": "malaga-2"
+  }
+]

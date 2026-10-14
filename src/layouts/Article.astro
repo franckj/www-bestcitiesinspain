@@ -1,0 +1,94 @@
+---
+import Base from './Base.astro';
+import Toc from '../components/Toc.astro';
+import Faq from '../components/Faq.astro';
+import Crumbs from '../components/Crumbs.astro';
+import Cards from '../components/Cards.astro';
+import Photo from '../components/Photo.astro';
+import Tours from '../components/Tours.astro';
+import GygWidget from '../components/GygWidget.astro';
+import { byGroup, groupLabel } from '../lib/tours';
+import { T, langOf, fmtDateL } from '../lib/i18n';
+import { src } from '../lib/photos';
+import { SITE, PUBLISHED, isoDate, publisher, faqSchema, breadcrumbSchema } from '../lib/site';
+
+interface Props {
+  data: {
+    title: string; seoTitle: string; description: string; summary: string; updated: Date; photo?: string;
+    tours: string[]; widget: boolean; toursFirst?: boolean; faq: { q: string; a: string }[];
+  };
+  headings: { depth: number; slug: string; text: string }[];
+  crumbs: { name: string; path: string }[];
+  related?: { href: string; title: string; text: string }[];
+  extraSchema?: object[];
+}
+const { data, headings, crumbs, related = [], extraSchema = [] } = Astro.props;
+const url = `${SITE.url}${Astro.url.pathname}`;
+const lang = langOf(Astro.url);
+const t = T[lang];
+const groups = data.tours.map((g) => ({ id: g, label: groupLabel(g, lang)!, tours: byGroup(g) })).filter((g) => g.tours.length);
+const tourHeadings = groups.map((g) => ({ depth: 2, slug: `tours-${g.id}`, text: g.label }));
+const tocHeadings = [
+  ...(data.toursFirst ? tourHeadings : []),
+  ...headings,
+  ...(data.toursFirst ? [] : tourHeadings),
+  ...(data.faq.length ? [{ depth: 2, slug: 'faq', text: t.faqShort }] : []),
+];
+const image = data.photo ? src(data.photo, 1600) : undefined;
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': `${url}#article`,
+    headline: data.title,
+    description: data.description,
+    abstract: data.summary,
+    url,
+    mainEntityOfPage: url,
+    image: `${SITE.url}${image ?? '/og.jpg'}`,
+    datePublished: PUBLISHED,
+    dateModified: isoDate(data.updated),
+    inLanguage: lang,
+    author: { '@id': `${SITE.url}/#org` },
+    publisher,
+  },
+  ...(data.faq.length ? [{ ...faqSchema(data.faq), '@id': `${url}#faq` }] : []),
+  ...(crumbs.length > 1 ? [breadcrumbSchema(crumbs)] : []),
+  ...extraSchema,
+];
+---
+<Base title={data.seoTitle} description={data.description} schema={schema} ogImage={image}>
+  <div class="wrap">
+    <Crumbs items={crumbs} />
+    <div class="page has-toc">
+      <aside class="toc-col"><Toc headings={tocHeadings} /></aside>
+      <article class="article">
+        <header class="article-head">
+          <h1>{data.title}</h1>
+          <p class="lede">{data.summary}</p>
+          <p class="meta">{t.lastChecked} <time datetime={isoDate(data.updated)}>{fmtDateL(data.updated, lang)}</time></p>
+        </header>
+        <Photo slug={data.photo} caption eager />
+        <slot name="before" />
+        <Toc headings={tocHeadings} inline />
+        {data.toursFirst && groups.map((g) => (
+          <section><h2 id={`tours-${g.id}`}>{g.label}</h2><Tours tours={g.tours} showKind={false} /></section>
+        ))}
+        <div class="prose"><slot /></div>
+        {!data.toursFirst && groups.map((g) => (
+          <section><h2 id={`tours-${g.id}`}>{g.label}</h2><Tours tours={g.tours} showKind={false} /></section>
+        ))}
+        <slot name="after" />
+        {data.widget && (
+          <section aria-label={t.moreTours}><h2>{t.moreTours}</h2><GygWidget /></section>
+        )}
+        <Faq faq={data.faq} />
+        {related.length > 0 && (
+          <section class="related" aria-labelledby="related">
+            <h2 id="related">{t.keepPlanning}</h2>
+            <Cards items={related} />
+          </section>
+        )}
+      </article>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,110 @@
+[
+ {
+  "id": "110908",
+  "group": "san-sebastian",
+  "title": "San Sebastian food tour: pintxo tasting paired with wines",
+  "url": "https://www.getyourguide.com/san-sebastian-l94/san-sebastian-food-tour-pintxo-tasting-wines-t110908/",
+  "priceFrom": 131,
+  "priceUnit": "person",
+  "currency": "EUR",
+  "rating": 4.8,
+  "reviews": 829,
+  "duration": "3 h",
+  "start": "Ijentea Kalea 1, Old Town",
+  "summary": "A local guide takes you round traditional Old Town bars for eight pintxos, three wines, a cider and a local liqueur per person.",
+  "places": [
+   "San Sebastián"
+  ],
+  "checked": "2026-10-14"
+ },
+ {
+  "id": "278717",
+  "group": "san-sebastian",
+  "title": "San Sebastian: Pintxos and Wine Tour",
+  "url": "https://www.getyourguide.com/san-sebastian-l94/san-sebastian-the-ultimate-pintxos-and-wine-tour-t278717/",
+  "priceFrom": 103,
+  "priceUnit": "person",
+  "currency": "EUR",
+  "rating": 4.9,
+  "reviews": 648,
+  "duration": "3 h",
+  "start": "Ijentea Kalea 6, Old Town",
+  "summary": "Guided walking tour in English with 8 pintxos and 4 drinks; shared or private option.",
+  "places": [
+   "San Sebastián"
+  ],
+  "checked": "2026-10-14"
+ },
+ {
+  "id": "618892",
+  "group": "san-sebastian",
+  "title": "San Sebastian: Walking Tour of Over 15 Must-See Attractions",
+  "url": "https://www.getyourguide.com/san-sebastian-l94/san-sebastian-must-see-attractions-walking-tour-t618892/",
+  "priceFrom": 35,
+  "priceUnit": "person",
+  "currency": "EUR",
+  "rating": 4.6,
+  "reviews": 119,
+  "duration": "2 h",
+  "start": "City centre (see booking)",
+  "summary": "Two-hour walk past more than 15 city sights with an English-speaking guide; small-group or private options.",
+  "places": [
+   "San Sebastián"
+  ],
+  "checked": "2026-10-14"
+ },
+ {
+  "id": "426639",
+  "group": "san-sebastian",
+  "title": "San Sebastian: Guided E-Bike Tour",
+  "url": "https://www.getyourguide.com/san-sebastian-l94/san-sebastian-guided-e-bike-tour-t426639/",
+  "priceFrom": 59,
+  "priceUnit": "person",
+  "currency": "EUR",
+  "rating": 4.8,
+  "reviews": 532,
+  "duration": "3 h",
+  "start": "Sarriegi Plaza 9, Old Town",
+  "summary": "Small-group ride with an English-speaking local guide; e-bike, helmet and rain poncho included. Not for under-15s.",
+  "places": [
+   "San Sebastián"
+  ],
+  "checked": "2026-10-14"
+ },
+ {
+  "id": "449173",
+  "group": "san-sebastian",
+  "title": "San Sebastián: Traditional Cider House Tour with Lunch",
+  "url": "https://www.getyourguide.com/san-sebastian-l94/traditional-cider-house-tour-transport-included-t449173/",
+  "priceFrom": 83,
+  "priceUnit": "person",
+  "currency": "EUR",
+  "rating": 4.9,
+  "reviews": 188,
+  "duration": "4 h",
+  "start": "Bengoetxea Kalea 2, city centre",
+  "summary": "Transport to a cider house for a guided tour, cider and pintxo tasting, and lunch of cod omelette, grilled T-bone steak and cheese.",
+  "places": [
+   "San Sebastián"
+  ],
+  "checked": "2026-10-14"
+ },
+ {
+  "id": "205408",
+  "group": "san-sebastian",
+  "title": "Zarautz, Getaria and Zumaia from San Sebastian",
+  "url": "https://www.getyourguide.com/san-sebastian-l94/gipuzkoa-coast-half-day-tour-t205408/",
+  "priceFrom": 55,
+  "priceUnit": "person",
+  "currency": "EUR",
+  "rating": 4.7,
+  "reviews": 63,
+  "duration": "4 h",
+  "start": "San Sebastián centre (see booking)",
+  "summary": "Half-day trip along the Gipuzkoa coast in an air-conditioned vehicle with a local guide and guided visits; lunch not included.",
+  "places": [
+   "San Sebastián"
+  ],
+  "checked": "2026-10-14"
+ }
+]

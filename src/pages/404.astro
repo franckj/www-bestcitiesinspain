@@ -1,30 +1,14 @@
 ---
-import BaseLayout from '../components/BaseLayout.astro';
-
-Astro.response.status = 404;
+import Base from '../layouts/Base.astro';
+import Cards from '../components/Cards.astro';
+import { relatedCards } from '../lib/related';
+import { GUIDE_ORDER } from '../lib/site';
+const cards = await relatedCards(GUIDE_ORDER);
 ---
-
-<BaseLayout
-  title="Page Not Found | Best Cities in Spain"
-  description="This page doesn't exist. Browse our guide to Spain's greatest cities."
->
-  <div style="max-width: 720px; margin: 0 auto; padding: 6rem 1.5rem; text-align: center;">
-    <p class="text-7xl mb-6">🇪🇸</p>
-    <h1
-      class="font-bold mb-4"
-      style="font-family: 'Playfair Display', Georgia, serif; color: #1A1A1A; font-size: 2rem; line-height: 1.2;"
-    >
-      This city doesn't exist (yet).
-    </h1>
-    <p class="mb-8" style="color: #6B7280; font-size: 1.05rem;">
-      Maybe it should — we're always expanding our guide.
-    </p>
-    <a
-      href="/"
-      class="inline-block px-6 py-3 rounded-lg font-semibold text-white transition-opacity duration-200 hover:opacity-90"
-      style="background-color: #B7472A;"
-    >
-      Back to the guide →
-    </a>
-  </div>
-</BaseLayout>
+<Base title="Page not found | Best Cities in Spain" description="This page doesn't exist." noindex>
+  <div class="wrap"><div class="article" style="padding:2.5rem 0">
+    <h1>This street doesn't go anywhere.</h1>
+    <p class="lede">The page you're looking for doesn't exist or has moved. Start from the <a href="/">guide to the best cities in Spain</a>, or pick one of these.</p>
+    <Cards items={cards} />
+  </div></div>
+</Base>

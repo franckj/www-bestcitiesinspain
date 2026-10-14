@@ -1,0 +1,19 @@
+---
+import Base from './Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { breadcrumbSchema } from '../lib/site';
+import { T, langOf, href } from '../lib/i18n';
+interface Props { title: string; seoTitle: string; description: string; path: string; noindex?: boolean }
+const { title, seoTitle, description, path, noindex = false } = Astro.props;
+const lang = langOf(Astro.url);
+const crumbs = [{ name: T[lang].home, path: href(lang, '/') }, { name: title, path: href(lang, path) }];
+---
+<Base title={seoTitle} description={description} schema={[breadcrumbSchema(crumbs)]} ogType="website" noindex={noindex}>
+  <div class="wrap">
+    <Crumbs items={crumbs} />
+    <article class="article prose" style="padding-bottom:2rem">
+      <h1>{title}</h1>
+      <slot />
+    </article>
+  </div>
+</Base>

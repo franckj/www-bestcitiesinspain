@@ -1,43 +1,22 @@
-# Astro Starter Kit: Minimal
+# bestcitiesinspain.com
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Independent English guide to the 8 best cities in Spain for a first visit. Astro 7 static site on Cloudflare Pages (project `bestcitiesinspain`), built on the geo travel kit (`ops/domains/geo-travel-kit.md`, same code as www-visitprosecco).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
+- `npm run dev`, `npm run build`
+- `npm run deploy`: build and deploy to Cloudflare Pages (main). Commits tagged `[deploy]` also deploy through GitHub Actions.
+- `node scripts/og.mjs`: regenerate og.jpg, icons and favicon.ico.
+- `node scripts/indexnow.mjs`: ping IndexNow with all sitemap URLs.
 
-## 🚀 Project Structure
+## Where things live
+- `src/lib/site.ts`: site config, GetYourGuide link helper, guide/city order. `src/lib/i18n.ts`: UI strings; `ENABLED = ['en']` (German is ready in the kit, off here).
+- `src/content/guides/*.md` (home.md = homepage), `src/content/destinations/*.md` (8 cities).
+- `src/data/tours.json` (merged from `src/data/parts/<city>.tours.json`), `src/data/photos.json` (from `parts/<city>.photos.json`).
+- `src/views/home-text.ts`: homepage blocks (chooser, seasons, hero buttons).
+- `public/_redirects`: old URLs. `functions/_middleware.js`: www and pages.dev → apex.
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Rules
+- Nothing invented: every fact sourced and dated. Train times from Renfe's timetable (see getting-around-spain.md).
+- Tour prices are GetYourGuide's, shown with the checked date. All GYG links via `GYG.link()` with `data-gyg` (Plausible `outbound_gyg`).
+- Hotels: Booking.com links converted by Stay22; no prices, stars or scores.
+- Barcelona stays short and links to ilovecatalonia.com.

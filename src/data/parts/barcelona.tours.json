@@ -1,0 +1,92 @@
+[
+  {
+    "id": "451750",
+    "group": "barcelona",
+    "title": "Barcelona: Sagrada Familia Skip-the-Line Guided Tour",
+    "url": "https://www.getyourguide.com/barcelona-l45/sagrada-familia-skip-the-line-tour-t451750/",
+    "priceFrom": 47,
+    "priceUnit": "person",
+    "currency": "EUR",
+    "rating": 4.7,
+    "reviews": 4757,
+    "duration": "1.5 h",
+    "start": "Carrer de Mallorca 418",
+    "summary": "Skip-the-line Sagrada Família ticket and a guided tour with a certified Barcelona guide and an audio headset.",
+    "places": [
+      "Barcelona"
+    ],
+    "checked": "2026-10-14"
+  },
+  {
+    "id": "87947",
+    "group": "barcelona",
+    "title": "Barcelona: Park Güell & La Sagrada Familia Tickets and Tour",
+    "url": "https://www.getyourguide.com/barcelona-l45/barcelona-park-guell-la-sagrada-familia-tickets-and-tour-t87947/",
+    "priceFrom": 109,
+    "priceUnit": "person",
+    "currency": "EUR",
+    "rating": 4.8,
+    "reviews": 1706,
+    "duration": "4 h",
+    "start": "Carretera del Carmel 23, Horta-Guinardó",
+    "summary": "Licensed guide, skip-the-line tickets to Park Güell's Monumental Zone and the Sagrada Família, and private transport between the two.",
+    "places": [
+      "Barcelona"
+    ],
+    "checked": "2026-10-14"
+  },
+  {
+    "id": "61664",
+    "group": "barcelona",
+    "title": "Barcelona: Old Town and Gothic Quarter Walking Tour",
+    "url": "https://www.getyourguide.com/barcelona-l45/barcelona-old-town-and-gothic-quarter-walking-tour-t61664/",
+    "priceFrom": 18,
+    "priceUnit": "person",
+    "currency": "EUR",
+    "rating": 4.8,
+    "reviews": 1917,
+    "duration": "2.5–4 h",
+    "start": "Movistar Centre, Plaça de Catalunya 16",
+    "summary": "Small-group walk (max 15) through Roman and medieval Barcelona, starting from Plaça de Sant Jaume, with an English- and Spanish-speaking guide.",
+    "places": [
+      "Barcelona"
+    ],
+    "checked": "2026-10-14"
+  },
+  {
+    "id": "303593",
+    "group": "barcelona",
+    "title": "Barcelona: Tapas Walking Tour with Food, Wine, and History",
+    "url": "https://www.getyourguide.com/barcelona-l45/barcelona-food-tasting-tour-tapas-wine-and-vermouth-t303593/",
+    "priceFrom": 53,
+    "priceUnit": "person",
+    "currency": "EUR",
+    "rating": 4.8,
+    "reviews": 5516,
+    "duration": "3 h",
+    "start": "Travel Bar, off La Rambla",
+    "summary": "Four food stops in the old town with food and drinks at each venue and a local guide; adults only.",
+    "places": [
+      "Barcelona"
+    ],
+    "checked": "2026-10-14"
+  },
+  {
+    "id": "382639",
+    "group": "barcelona",
+    "title": "Barcelona: Montserrat, Cogwheel, Black Madonna & Winery Tour",
+    "url": "https://www.getyourguide.com/barcelona-l45/barcelona-montserrat-tour-with-optional-winelunch-t382639/",
+    "priceFrom": 39,
+    "priceUnit": "person",
+    "currency": "EUR",
+    "rating": 4.7,
+    "reviews": 7061,
+    "duration": "6–9 h",
+    "start": "Carrer de Nàpols 68, Eixample",
+    "summary": "Air-conditioned bus to Montserrat, a guided walk and entry to the basilica; cogwheel train, Black Madonna, wine tasting or lunch depend on the option.",
+    "places": [
+      "Barcelona"
+    ],
+    "checked": "2026-10-14"
+  }
+]

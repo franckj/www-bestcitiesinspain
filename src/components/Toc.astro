@@ -1,0 +1,20 @@
+---
+interface Props { headings: { depth: number; slug: string; text: string }[]; inline?: boolean }
+import { T, langOf } from '../lib/i18n';
+const { headings, inline = false } = Astro.props;
+const label = T[langOf(Astro.url)].onThisPage;
+const items = headings.filter((h) => h.depth === 2);
+---
+{items.length > 2 && (
+  inline ? (
+    <details class="toc toc-inline">
+      <summary>{label}</summary>
+      <ol>{items.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+    </details>
+  ) : (
+    <nav class="toc" aria-label={label}>
+      <p class="toc-title">{label}</p>
+      <ol>{items.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+    </nav>
+  )
+)}

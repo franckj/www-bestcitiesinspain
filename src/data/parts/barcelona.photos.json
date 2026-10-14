@@ -1,0 +1,24 @@
+[
+  {
+    "title": "Sagrada Família ceiling",
+    "author": "Alvesgaspar",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sagrada_Familia_March_2015-10a.jpg",
+    "description": "The ceiling of the Sagrada Família, Barcelona.",
+    "width": 1600,
+    "height": 1203,
+    "slug": "barcelona"
+  },
+  {
+    "title": "La Boqueria, Barcelona",
+    "author": "Bernard Gagnon",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:La_Boqueria,_Barcelona.jpg",
+    "description": "Sweets on sale in La Boqueria market, Barcelona.",
+    "width": 1600,
+    "height": 1129,
+    "slug": "barcelona-2"
+  }
+]

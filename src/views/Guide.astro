@@ -1,0 +1,19 @@
+---
+import { render } from 'astro:content';
+import Article from '../layouts/Article.astro';
+import { relatedCards } from '../lib/related';
+import { shortName } from '../lib/site';
+import { T, href, type Lang } from '../lib/i18n';
+
+interface Props { entry: any; lang: Lang }
+const { entry, lang } = Astro.props;
+const { Content, headings } = await render(entry);
+const related = await relatedCards(entry.data.related, lang);
+const crumbs = [
+  { name: T[lang].home, path: href(lang, '/') },
+  { name: shortName(entry.id, lang) ?? entry.data.title, path: href(lang, `/${entry.id}/`) },
+];
+---
+<Article data={entry.data} headings={headings} crumbs={crumbs} related={related}>
+  <Content />
+</Article>
