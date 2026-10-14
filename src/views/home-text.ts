@@ -3,7 +3,7 @@
 const en = {
   placeName: 'Spain',
   eyebrow: 'Independent city guide',
-  ctaTours: 'Browse Spain tours',
+  ctaTours: 'Browse city tours & tickets',
   ctaPlaces: 'Compare the 8 cities',
   proofGuides: (p: number, g: number) => `${p} city guides, ${g} planning guides`,
   proofTours: 'Real GetYourGuide tours, checked October 2026',

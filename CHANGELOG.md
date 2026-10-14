@@ -2,6 +2,10 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-10-14 (later) — Hero button wording
+
+- Primary hero button now reads "Browse city tours & tickets" (was "Browse Spain tours"), matching the GetYourGuide Spain page it opens, which leads with city tickets. Franck asked for better wording.
+
 ## 2026-10-14 (later) — Booking button colour
 
 - Booking buttons: one colour on every kit site, GetYourGuide blue #0071EB, white text (4.6:1 contrast); Franck asked for a conventional booking colour, 2026-10-14.
