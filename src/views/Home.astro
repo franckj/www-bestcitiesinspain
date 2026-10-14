@@ -78,6 +78,7 @@ const schema = [
       </ul>
     </section>
 
+    {c.seasons.length > 0 && (
     <section class="section" aria-labelledby="seasons">
       <div class="section-head">
         <h2 id="seasons">{c.seasonsH}</h2>
@@ -87,6 +88,7 @@ const schema = [
         {c.seasons.map((x) => <li><h3>{x.name}</h3><p>{x.text}</p></li>)}
       </ul>
     </section>
+    )}
 
     <section class="section" aria-labelledby="places">
       <div class="section-head">
@@ -104,7 +106,7 @@ const schema = [
     <section class="band">
       <div>
         <h2>{c.bandH}</h2>
-        <p>{c.bandText} <a href={h('/itineraries/')}>{c.bandLink}</a>.</p>
+        <p>{c.bandText} <a href={h(c.bandPath)}>{c.bandLink}</a>.</p>
       </div>
       <a class="btn" href={h('/spain-tours/')}>{c.bandBtn}</a>
     </section>

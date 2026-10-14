@@ -33,6 +33,7 @@ const en = {
   guidesH: 'Plan your trip',
   bandH: 'Booking the big tickets?',
   bandText: 'Alhambra tickets are personal, need ID and fix your Nasrid Palaces entry time. Several guided tours on GetYourGuide include the ticket. Planning the whole trip? See the',
+  bandPath: '/itineraries/',
   bandLink: '7, 10 and 14-day itineraries',
   bandBtn: 'See tours by city',
 };
