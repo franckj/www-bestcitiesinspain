@@ -94,8 +94,8 @@ const alt = { en: new URL(altPath(path, 'en'), SITE.url).href, de: new URL(altPa
         <nav class="nav" aria-label="Main">
           {nav.map((n) => <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>)}
           {multi && !noindex && <a class="lang-switch" href={lang === 'de' ? altPath(path, 'en') : altPath(path, 'de')} hreflang={lang === 'de' ? 'en' : 'de'} lang={lang === 'de' ? 'en' : 'de'}>{t.langSwitch}</a>}
-          <a class="nav-cta" href={GYG.link(GYG_LOCATION, lang)} rel="sponsored noopener" target="_blank" data-gyg="header">{t.bookTour}</a>
         </nav>
+        <a class="nav-cta" href={GYG.link(GYG_LOCATION, lang)} rel="sponsored noopener" target="_blank" data-gyg="header">{t.bookTour}</a>
       </div>
     </header>
     <main id="main">

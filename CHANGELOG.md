@@ -2,6 +2,10 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-10-14 (later) — Header button top right
+
+- "Book a tour" moved to the top right of the header on every screen (Franck's request); menu wraps below on phones. Checked at 360 px and 1280 px.
+
 ## 2026-10-14 — Rebuilt on the geo travel kit v2
 
 Plan: ops/domains/geo-travel-kit-v2-plan.md (site #3, added by Franck 2026-10-14; "go everything").

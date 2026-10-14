@@ -67,8 +67,8 @@ p, ul, ol { margin: 0 0 1.05rem; }
 .nav { display: flex; gap: 0.2rem 1.1rem; flex-wrap: wrap; font-size: 0.95rem; }
 .nav a { color: var(--ink); text-decoration: none; padding: 0.35rem 0; }
 .nav a:hover, .nav a[aria-current='page'] { color: var(--vine); text-decoration: underline; }
-.nav .nav-cta { background: var(--gold); color: #1d1a0e; font-weight: 650; padding: 0.35rem 0.9rem; border-radius: 999px; text-decoration: none; }
-.nav .nav-cta:hover { background: #e6c873; color: #1d1a0e; text-decoration: none; }
+.nav-cta { background: var(--gold); color: #1d1a0e; font-weight: 650; padding: 0.35rem 0.9rem; border-radius: 999px; text-decoration: none; }
+.nav-cta:hover { background: #e6c873; color: #1d1a0e; text-decoration: none; }
 .nav .lang-switch { color: var(--vine); font-weight: 600; border-left: 1px solid var(--line); padding-left: 1.1rem; }
 @media (max-width: 719px) { .site-header .wrap { padding-block: 0.6rem; } .nav { width: 100%; gap: 0.1rem 0.9rem; font-size: 0.9rem; } }
 
@@ -214,3 +214,8 @@ tr:last-child td { border-bottom: 0; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 
 .tour-img { width: calc(100% + 2.3rem); max-width: none; margin: -1.1rem -1.15rem 0.9rem; aspect-ratio: 16 / 10; object-fit: cover; }
+
+/* Header CTA placement: top right on every screen; on phones the menu wraps below logo + button. */
+.site-header .nav { margin-left: auto; }
+.nav-cta { flex: none; }
+@media (max-width: 719px) { .site-header .nav { order: 3; margin-left: 0; } .nav-cta { order: 2; padding: 0.4rem 0.85rem; font-size: 0.9rem; } .brand { min-width: 0; } .brand-name { font-size: 1.12rem; white-space: nowrap; } .site-header .wrap { flex-wrap: wrap; column-gap: 0.6rem; } }
