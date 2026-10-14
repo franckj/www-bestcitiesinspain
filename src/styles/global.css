@@ -15,6 +15,9 @@
 
 /* Palette (brief): warm paper, Spanish terracotta, gold. Token names kept from the kit (vine = primary). */
 :root {
+  /* Booking buttons (GetYourGuide links): one colour on every kit site, GetYourGuide's own blue (2026-10-14). White text, contrast 4.6:1. */
+  --book: #0071eb;
+  --book-hover: #005bbd;
   --bg: #faf7f2;
   --surface: #fffdf8;
   --ink: #1a1a1a;
@@ -67,8 +70,8 @@ p, ul, ol { margin: 0 0 1.05rem; }
 .nav { display: flex; gap: 0.2rem 1.1rem; flex-wrap: wrap; font-size: 0.95rem; }
 .nav a { color: var(--ink); text-decoration: none; padding: 0.35rem 0; }
 .nav a:hover, .nav a[aria-current='page'] { color: var(--vine); text-decoration: underline; }
-.nav-cta { background: var(--gold); color: #1d1a0e; font-weight: 650; padding: 0.35rem 0.9rem; border-radius: 999px; text-decoration: none; }
-.nav-cta:hover { background: #e6c873; color: #1d1a0e; text-decoration: none; }
+.nav-cta { background: var(--book); color: #fff; font-weight: 650; padding: 0.35rem 0.9rem; border-radius: 999px; text-decoration: none; }
+.nav-cta:hover { background: var(--book-hover); color: #fff; text-decoration: none; }
 .nav .lang-switch { color: var(--vine); font-weight: 600; border-left: 1px solid var(--line); padding-left: 1.1rem; }
 @media (max-width: 719px) { .site-header .wrap { padding-block: 0.6rem; } .nav { width: 100%; gap: 0.1rem 0.9rem; font-size: 0.9rem; } }
 
@@ -80,8 +83,8 @@ p, ul, ol { margin: 0 0 1.05rem; }
 .hero-text p { max-width: 38rem; font-size: 1.1rem; margin: 0; color: #f1efe6; }
 .hero-text .eyebrow { text-shadow: 0 1px 3px rgba(0,0,0,0.7); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }
-.hero .btn-gyg { background: var(--gold); color: #1d1a0e; font-size: 1.05rem; padding: 0.9rem 1.5rem; }
-.hero .btn-gyg:hover { background: #e6c873; color: #1d1a0e; }
+.hero .btn-gyg { background: var(--book); color: #fff; font-size: 1.05rem; padding: 0.9rem 1.5rem; }
+.hero .btn-gyg:hover { background: var(--book-hover); color: #fff; }
 .hero .btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255, 255, 255, 0.75); padding: 0.75rem 1.3rem; }
 .hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
 .hero-proof { list-style: none; margin: 1.2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.3rem 1.4rem; font-size: 0.92rem; color: #f1efe6; }
