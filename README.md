@@ -17,6 +17,6 @@ Independent English guide to the 8 best cities in Spain for a first visit. Astro
 
 ## Rules
 - Nothing invented: every fact sourced and dated. Train times from Renfe's timetable (see getting-around-spain.md).
-- Tour prices are GetYourGuide's, shown with the checked date. All GYG links via `GYG.link()` with `data-gyg` (Plausible `outbound_gyg`).
+- Tour prices are GetYourGuide's, shown with the checked date. All GYG links via `GYG.link()` with `data-gyg` (event `outbound_gyg` in our events counter, ops events/README.md).
 - Hotels: Booking.com links converted by Stay22; no prices, stars or scores.
 - Barcelona stays short and links to ilovecatalonia.com.
