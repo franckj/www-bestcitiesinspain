@@ -4,10 +4,6 @@ export const SITE = {
   name: 'Best Cities in Spain',
   url: 'https://bestcitiesinspain.com',
   description: 'An independent guide to the 8 best cities in Spain for a first visit: how to choose, how many days, trains between them, where to stay and tours worth booking.',
-  // No per-site pa-….js script yet: the site is added in Plausible by Franck (the API can't add sites).
-  // The standard script works by domain name alone, so tracking starts as soon as the site exists there.
-  plausible: '',
-  plausibleDomain: 'bestcitiesinspain.com',
   // hello@ forwards to Franck through Cloudflare Email Routing.
   email: 'hello@bestcitiesinspain.com',
 };
