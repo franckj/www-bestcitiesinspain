@@ -62,23 +62,9 @@ const alt = { en: new URL(altPath(path, 'en'), SITE.url).href, de: new URL(altPa
     {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
     <!-- GetYourGuide partner script (Integration Analyzer, and it renders any widget on the page) -->
     <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id={GYG.partnerId}></script>
-    {!SITE.plausible && (SITE as any).plausibleDomain && (
-      <Fragment>
-        <!-- Privacy-friendly analytics by Plausible (standard script, by domain) -->
-        <script defer data-domain={(SITE as any).plausibleDomain} src="https://plausible.io/js/script.js"></script>
-        <script is:inline>window.plausible = window.plausible || function () { (window.plausible.q = window.plausible.q || []).push(arguments) };</script>
-      </Fragment>
-    )}
-    {SITE.plausible && (
-      <Fragment>
-        <!-- Privacy-friendly analytics by Plausible -->
-        <script async src={SITE.plausible}></script>
-        <script is:inline>
-          window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-          plausible.init()
-        </script>
-      </Fragment>
-    )}
+    <!-- Our cookie-free events counter (ops events/README.md): the stub queues calls made before s.js loads. -->
+    <script is:inline>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)};window.events=window.events||function(){(events.q=events.q||[]).push(arguments)};</script>
+    <script is:inline defer data-no-forms src="https://e.franckj.com/s.js"></script>
     <!-- Stay22 Let Me Allez (account lmaID): turns Booking/Expedia links into affiliate links. -->
     <script is:inline>
       (function (s, t, a, y, twenty, two) { s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '6abe3ba1824fe0ab2e736984' };
@@ -134,7 +120,7 @@ const alt = { en: new URL(altPath(path, 'en'), SITE.url).href, de: new URL(altPa
       </div>
     </footer>
     <script is:inline>
-      // Counts outbound clicks to GetYourGuide as the Plausible goal "outbound_gyg".
+      // Counts outbound clicks to GetYourGuide as the event "outbound_gyg" in our events counter (ops events/README.md).
       document.addEventListener('click', function (e) {
         var a = e.target.closest && e.target.closest('a[data-gyg]');
         if (a && window.plausible) window.plausible('outbound_gyg', { props: { tour: a.dataset.gyg, page: location.pathname } });

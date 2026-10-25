@@ -2,6 +2,9 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-10-25: Plausible replaced by the events counter
+- Plausible's tag gave way to our cookie-free events counter (ops events/README.md); `outbound_gyg` unchanged, page views stay with Cloudflare Web Analytics, privacy page updated.
+
 ## 2026-10-14: session closed
 - Live: 8 cities, 6 guides, 45 tours, live weather on city pages (added today). Next check: day-42 read on 2026-11-25. Waiting on Franck: nothing.
 
