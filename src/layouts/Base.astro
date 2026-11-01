@@ -65,10 +65,18 @@ const alt = { en: new URL(altPath(path, 'en'), SITE.url).href, de: new URL(altPa
     <!-- Our cookie-free events counter (ops events/README.md): the stub queues calls made before s.js loads. -->
     <script is:inline>window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)};window.events=window.events||function(){(events.q=events.q||[]).push(arguments)};</script>
     <script is:inline defer data-no-forms src="https://e.franckj.com/s.js"></script>
-    <!-- Stay22 Let Me Allez (account lmaID): turns Booking/Expedia links into affiliate links. -->
+    <!-- Stay22 Let Me Allez (account lmaID): turns Booking.com links into affiliate links, and only those: it rewrites links
+         inside elements with class "s22", and each Booking.com link is wrapped in one before the script loads. GetYourGuide
+         links stay direct with our partner ID (same fix as americawinetrails, 2026-10-24; Franck's go, 2026-11-01). -->
     <script is:inline>
-      (function (s, t, a, y, twenty, two) { s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '6abe3ba1824fe0ab2e736984' };
-        twenty = t.createElement(a); two = t.getElementsByTagName(a)[0]; twenty.async = 1; twenty.src = y; two.parentNode.insertBefore(twenty, two);
+      (function (s, t, a, y) {
+        s.Stay22 = s.Stay22 || {}; s.Stay22.params = { lmaID: '6abe3ba1824fe0ab2e736984', restrictAllezSwapDOM: '.s22' };
+        function go() {
+          var links = t.querySelectorAll('a[href*="booking.com"]'), i, w;
+          for (i = 0; i < links.length; i++) { w = t.createElement('span'); w.className = 's22'; links[i].parentNode.insertBefore(w, links[i]); w.appendChild(links[i]); }
+          var el = t.createElement(a), first = t.getElementsByTagName(a)[0]; el.async = 1; el.src = y; first.parentNode.insertBefore(el, first);
+        }
+        if (t.readyState === 'loading') t.addEventListener('DOMContentLoaded', go); else go();
       })(window, document, 'script', 'https://scripts.stay22.com/letmeallez.js');
     </script>
   </head>
