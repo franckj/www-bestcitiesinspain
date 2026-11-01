@@ -2,6 +2,9 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-11-01: Stay22 only rewrites Booking.com links
+- GetYourGuide links stay direct with partner 0GI6KRZ: Stay22 (`restrictAllezSwapDOM: '.s22'`) now rewrites only Booking.com links, each wrapped in `span.s22` before its script loads. Since 2026-10-25 the events counter showed every GetYourGuide click going through stay22.com/allez. Same fix as americawinetrails (2026-10-24). Franck's go and deploy.
+
 ## 2026-10-25: Plausible replaced by the events counter
 - Plausible's tag gave way to our cookie-free events counter (ops events/README.md); `outbound_gyg` unchanged, page views stay with Cloudflare Web Analytics, privacy page updated.
 
