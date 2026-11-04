@@ -2,6 +2,10 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-11-04: weather function no longer crashes
+- Supervisor alert: `/api/meteo?place=madrid` answered 500 (Cloudflare 1101, uncaught exception); San Sebastián too, the other 6 cities fine, MET Norway itself answering 200. Visitors saw no error, only a hidden weather box on those two pages.
+- `functions/api/meteo.js`: the whole request is now in try/catch and answers 502 with the reason (logged with `console.error`), malformed forecast steps are skipped, an empty forecast is a 502, and the cache key moved to `__met-cache/v2/` so stored entries are bypassed. Franck's go and deploy.
+
 ## 2026-11-01: Stay22 only rewrites Booking.com links
 - GetYourGuide links stay direct with partner 0GI6KRZ: Stay22 (`restrictAllezSwapDOM: '.s22'`) now rewrites only Booking.com links, each wrapped in `span.s22` before its script loads. Since 2026-10-25 the events counter showed every GetYourGuide click going through stay22.com/allez. Same fix as americawinetrails (2026-10-24). Franck's go and deploy.
 

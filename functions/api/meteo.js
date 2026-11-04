@@ -11,14 +11,15 @@ function summarise(data) {
   const ts = data.properties.timeseries;
   const days = new Map();
   for (const t of ts) {
+    const det = t?.data?.instant?.details;
+    if (!t?.time || typeof det?.air_temperature !== 'number') continue; // skip malformed steps instead of crashing
     const p = Object.fromEntries(MADRID.formatToParts(new Date(t.time)).map((x) => [x.type, x.value]));
     const day = `${p.year}-${p.month}-${p.day}`;
     const hour = Number(p.hour) % 24;
     const d = days.get(day) ?? { date: day, min: Infinity, max: -Infinity, wind: 0, symbol: null };
-    const det = t.data.instant.details;
     d.min = Math.min(d.min, det.air_temperature);
     d.max = Math.max(d.max, det.air_temperature);
-    d.wind = Math.max(d.wind, det.wind_speed);
+    d.wind = Math.max(d.wind, det.wind_speed ?? 0);
     if (hour >= 11 && hour <= 14 && !d.symbol) d.symbol = t.data.next_6_hours?.summary?.symbol_code ?? t.data.next_1_hours?.summary?.symbol_code ?? null;
     days.set(day, d);
   }
@@ -32,14 +33,22 @@ export async function onRequestGet({ request, waitUntil }) {
   const slug = new URL(request.url).searchParams.get('place') || '';
   const pl = PLACES[slug];
   if (!pl) return json({ error: 'unknown place' }, 404);
-  const cache = caches.default;
-  const key = new Request(`https://bestcitiesinspain.com/__met-cache/${slug}`);
-  const hit = await cache.match(key);
-  if (hit) return hit;
-  const r = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${pl.lat}&lon=${pl.lng}`, { headers: { 'User-Agent': UA } });
-  if (!r.ok) return json({ error: r.status }, 502);
-  const exp = Date.parse(r.headers.get('Expires') || '') || Date.now() + 1800e3;
-  const res = json(summarise(await r.json()), 200, Math.max(600, Math.round((exp - Date.now()) / 1000)));
-  waitUntil(cache.put(key, res.clone()));
-  return res;
+  // Any failure (network, bad JSON, unexpected shape, cache) answers 502 with the reason, never an uncaught 500 (Cloudflare 1101).
+  try {
+    const cache = caches.default;
+    const key = new Request(`https://bestcitiesinspain.com/__met-cache/v2/${slug}`);
+    const hit = await cache.match(key).catch(() => null);
+    if (hit) return hit;
+    const r = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${pl.lat}&lon=${pl.lng}`, { headers: { 'User-Agent': UA } });
+    if (!r.ok) return json({ error: r.status }, 502);
+    const exp = Date.parse(r.headers.get('Expires') || '') || Date.now() + 1800e3;
+    const out = summarise(await r.json());
+    if (!out.days.length) return json({ error: 'empty forecast' }, 502);
+    const res = json(out, 200, Math.max(600, Math.round((exp - Date.now()) / 1000)));
+    waitUntil(cache.put(key, res.clone()).catch(() => {}));
+    return res;
+  } catch (e) {
+    console.error('meteo', slug, e);
+    return json({ error: String(e?.message || e).slice(0, 200) }, 502);
+  }
 }
