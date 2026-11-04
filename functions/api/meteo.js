@@ -39,11 +39,16 @@ export async function onRequestGet({ request, waitUntil }) {
     const key = new Request(`https://bestcitiesinspain.com/__met-cache/v2/${slug}`);
     const hit = await cache.match(key).catch(() => null);
     if (hit) return hit;
-    const r = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${pl.lat}&lon=${pl.lng}`, { headers: { 'User-Agent': UA } });
-    if (!r.ok) return json({ error: r.status }, 502);
-    const exp = Date.parse(r.headers.get('Expires') || '') || Date.now() + 1800e3;
-    const out = summarise(await r.json());
-    if (!out.days.length) return json({ error: 'empty forecast' }, 502);
+    // 2026-11-04: MET's answer for Madrid and San Sebastián reached Cloudflare truncated (invalid JSON) while other
+    // cities were fine. If the 4-decimal URL fails, ask once more at 3 decimals (about 50 m away, a different MET URL).
+    const get = async (dec) => {
+      const r = await fetch(`https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${pl.lat.toFixed(dec)}&lon=${pl.lng.toFixed(dec)}`, { headers: { 'User-Agent': UA } });
+      if (!r.ok) throw new Error(`MET ${r.status}`);
+      const out = summarise(await r.json());
+      if (!out.days.length) throw new Error('empty forecast');
+      return { out, exp: Date.parse(r.headers.get('Expires') || '') || Date.now() + 1800e3 };
+    };
+    const { out, exp } = await get(4).catch((e) => { console.error('meteo', slug, 'retry at 3 decimals:', e); return get(3); });
     const res = json(out, 200, Math.max(600, Math.round((exp - Date.now()) / 1000)));
     waitUntil(cache.put(key, res.clone()).catch(() => {}));
     return res;
