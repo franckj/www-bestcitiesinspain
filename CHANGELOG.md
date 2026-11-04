@@ -2,6 +2,9 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-11-04: weather box keeps a 24 h backup
+- Weather box: when both MET tries fail, serve the last good forecast, then the last good forecast (kept 24 h); 424 JSON only when no copy exists, never a 5xx. Test: ops/scripts/test-meteo-proxies.mjs (15/15).
+
 ## 2026-11-04: weather function no longer crashes
 - Supervisor alert: `/api/meteo?place=madrid` answered 500 (Cloudflare 1101, uncaught exception); San Sebastián too, the other 6 cities fine, MET Norway itself answering 200. Visitors saw no error, only a hidden weather box on those two pages.
 - `functions/api/meteo.js`: the whole request is now in try/catch and answers 502 with the reason (logged with `console.error`), malformed forecast steps are skipped, an empty forecast is a 502, and the cache key moved to `__met-cache/v2/` so stored entries are bypassed. Franck's go and deploy.

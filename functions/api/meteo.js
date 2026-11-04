@@ -33,9 +33,11 @@ export async function onRequestGet({ request, waitUntil }) {
   const slug = new URL(request.url).searchParams.get('place') || '';
   const pl = PLACES[slug];
   if (!pl) return json({ error: 'unknown place' }, 404);
-  // Any failure (network, bad JSON, unexpected shape, cache) answers 502 with the reason, never an uncaught 500 (Cloudflare 1101).
+  // Any failure (network, bad JSON, unexpected shape, cache) serves the last good forecast (kept 24 h, marked stale);
+  // with no copy it answers 424 with the reason, never a 5xx (Cloudflare swaps 5xx for its own HTML page).
+  const cache = caches.default;
+  const backupKey = new Request(`https://bestcitiesinspain.com/__met-backup/${slug}`);
   try {
-    const cache = caches.default;
     const key = new Request(`https://bestcitiesinspain.com/__met-cache/v2/${slug}`);
     const hit = await cache.match(key).catch(() => null);
     if (hit) return hit;
@@ -50,10 +52,12 @@ export async function onRequestGet({ request, waitUntil }) {
     };
     const { out, exp } = await get(4).catch((e) => { console.error('meteo', slug, 'retry at 3 decimals:', e); return get(3); });
     const res = json(out, 200, Math.max(600, Math.round((exp - Date.now()) / 1000)));
-    waitUntil(cache.put(key, res.clone()).catch(() => {}));
+    waitUntil(Promise.all([cache.put(key, res.clone()), cache.put(backupKey, json(out, 200, 86400))]).catch(() => {}));
     return res;
   } catch (e) {
     console.error('meteo', slug, e);
-    return json({ error: String(e?.message || e).slice(0, 200) }, 502);
+    const old = await cache.match(backupKey).catch(() => null);
+    if (old) return json({ ...(await old.json()), stale: true }, 200, 300);
+    return json({ error: String(e?.message || e).slice(0, 200) }, 424);
   }
 }
