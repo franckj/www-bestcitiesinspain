@@ -2,6 +2,9 @@
 
 Log of what changed on bestcitiesinspain.com and why. Newest first.
 
+## 2026-11-04: session closed
+- Weather fix LIVE 2026-11-04 (Franck: "deploy"), weather box checked in headless Chrome at 390 px. Nothing waiting on Franck. Check first: nothing; the supervisor flags /api/meteo if MET is down more than 24 h.
+
 ## 2026-11-04: weather box keeps a 24 h backup
 - Weather box: when both MET tries fail, serve the last good forecast (kept 24 h, marked stale); 424 JSON only when no copy exists, never a 5xx. Test: ops/scripts/test-meteo-proxies.mjs (15/15).
 
